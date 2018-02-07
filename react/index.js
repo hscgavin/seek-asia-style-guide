@@ -13,6 +13,8 @@ export { default as NavigationBar } from './NavigationBar/NavigationBar';
 export { default as JobCard } from './JobCard/JobCard';
 export { default as JobCardLoader } from './JobCardLoader/JobCardLoader';
 
+export { default as Header } from './Header/Header';
+
 // Typography
 export { default as Critical } from './Critical/Critical';
 export { default as Paragraph } from './Paragraph/Paragraph';
@@ -32,6 +34,7 @@ export { default as PageBlock } from './PageBlock/PageBlock';
 export { default as Section } from './Section/Section';
 
 // Icons
+export { default as BookmarkIcon } from './BookmarkIcon/BookmarkIcon';
 export { default as ChevronIcon } from './ChevronIcon/ChevronIcon';
 export { default as ClearIcon } from './ClearIcon/ClearIcon';
 export { default as CloseIcon } from './CloseIcon/CloseIcon';
@@ -42,6 +45,7 @@ export { default as ErrorIcon } from './ErrorIcon/ErrorIcon';
 export { default as FacebookIcon } from './FacebookIcon/FacebookIcon';
 export { default as HeartIcon } from './HeartIcon/HeartIcon';
 export { default as HelpIcon } from './HelpIcon/HelpIcon';
+export { default as HomeIcon } from './HomeIcon/HomeIcon';
 export { default as InfoIcon } from './InfoIcon/InfoIcon';
 export { default as LinkedInIcon } from './LinkedInIcon/LinkedInIcon';
 export { default as MailIcon } from './MailIcon/MailIcon';

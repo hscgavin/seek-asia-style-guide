@@ -1,0 +1,56 @@
+@import (reference) "~seek-asia-style-guide/theme";
+
+.root {
+  width: 100%;
+  background-color: @saWhite;
+}
+
+.externalNav {
+  display: none;
+
+  @media @desktop {
+    display: block;
+  }
+}
+
+.primaryNav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%;
+  padding: 0 @grid-base * 2;
+  height: @grid-base * 12;
+
+  @media @desktop {
+    height: @grid-base * 16; 
+  }
+}
+
+.primaryNavNoLogin {
+  &:extend(.primaryNav);
+  justify-content: center;
+}
+
+.actionTray {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  z-index: @z-index-header-overlay + 1;
+  width: 100%;
+  height: @grid-base * 12;
+  background-color: @saWhite;
+  border-top: 1px solid @saGrey3;
+
+  @media desktop {
+    display: none;  
+  }
+}
+
+.actionTray svg {
+  fill: @saGrey4;
+}
