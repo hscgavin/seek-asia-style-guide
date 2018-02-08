@@ -21,19 +21,19 @@ const Header = ({ loginAvailable = true, logoComponent: LogoComponent, language,
       <div className={styles.actionTray}>
         <div>
           <a href={messages['header.homeUrl']}>
-            <HomeIcon />
+            <HomeIcon svgClassName={styles.svg} />
           </a>
         </div>
         <div>
-          <SearchIcon />
+          <SearchIcon svgClassName={styles.svg} />
         </div>
         { loginAvailable && (
           <div>
-            <BookmarkIcon />
+            <BookmarkIcon svgClassName={styles.svg} />
           </div>
         )}
         <div>
-          <HamburgerIcon />
+          <HamburgerIcon svgClassName={styles.svg} />
         </div>
       </div>
       <Menu shouldShowMenu />

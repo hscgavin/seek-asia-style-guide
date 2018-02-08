@@ -5,7 +5,7 @@ import Icon from '../private/Icon/Icon';
 import styles from './BookmarkIcon.less';
 
 export default function BookmarkIcon(props) {
-  return <Icon svgClassName={styles.svg} markup={svgMarkup} {...props} />;
+  return <Icon svgClassName={props.svgClassName || styles.svg} markup={svgMarkup} {...props} />;
 }
 
 BookmarkIcon.displayName = 'BookmarkIcon';
