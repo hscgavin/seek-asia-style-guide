@@ -1,16 +1,46 @@
 @import (reference) "~seek-asia-style-guide/theme";
 
 .root {
-  display: none;
+  /*display: none;*/
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: @z-index-header-overlay;
-  background-color: @saWhite;
+  background-color: @saGrey4;
 }
 
 .showMenu {
   display: block;
+}
+
+.headerMenu {
+  background-color: @saWhite;
+  margin-bottom: @grid-base;
+  color: @saGrey3;
+}
+
+.menuBody {
+  margin-bottom: @grid-base * 2;
+  background-color: @saWhite;
+}
+
+.menuItem {
+
+}
+
+.moreMenu {
+  display: none;
+}
+
+.showMoreMenu {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: @z-index-header-overlay + 1;
+  background-color: @saWhite;
 }

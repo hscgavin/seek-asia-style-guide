@@ -36,7 +36,7 @@ const Header = ({ loginAvailable = true, logoComponent: LogoComponent, language,
           <HamburgerIcon svgClassName={styles.svg} />
         </div>
       </div>
-      <Menu shouldShowMenu />
+      <Menu />
     </header>
   )
 };
