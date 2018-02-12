@@ -1,0 +1,23 @@
+@import (reference) "~seek-asia-style-guide/theme";
+
+.root {
+  height: @grid-base * 12;
+  background-color: @saWhite;
+  border-bottom: 1px solid @saGrey5;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 0 @grid-base * 4;
+}
+
+.interaction {
+  &:extend(.item);
+  color: @jsBlue;
+}

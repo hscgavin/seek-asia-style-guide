@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import styles from './Menu.less';
-import { Text, Card, Section } from 'seek-asia-style-guide/react';
+import MenuItem from './components/MenuItem/MenuItem';
+import { Text, Section, HomeIcon } from 'seek-asia-style-guide/react';
 
 export default class Menu extends Component {
   constructor() {
@@ -23,16 +24,16 @@ export default class Menu extends Component {
   render() {
     const { messages, shouldShowMenu, loginAvailable, tenant } = this.props;
   
-    const links = tenant === "jobsdb" ? [{title:"Home"},
-      {title:"MyJobsDB"},
-      {title:"Resources"},
-      {title:"Career Insights"}
-    ] : [{title:"Home"},
-      {title:"MyJobsStreet"},
-      {title:"Company Profiles"},
-      {title:"Career Insights"},
-      {title:"Education"},
-      {title:"More",onClick:this.openMoreMenu}
+    const links = tenant === "jobsdb" ? [{title:"Home", url: 'https://hk.jobsdb.com/hk', ItemIcon: HomeIcon },
+      {title:"MyJobsDB", url: 'https://hk.jobsdb.com/hk'},
+      {title:"Resources", url: 'https://hk.jobsdb.com/hk'},
+      {title:"Career Insights", url: 'https://hk.jobsdb.com/hk'}
+    ] : [{title:"Home", url: 'https://hk.jobsdb.com/hk', ItemIcon: HomeIcon},
+      {title:"MyJobsStreet", url: 'https://hk.jobsdb.com/hk'},
+      {title:"Company Profiles", url: 'https://hk.jobsdb.com/hk'},
+      {title:"Career Insights", url: 'https://hk.jobsdb.com/hk'},
+      {title:"Education", url: 'https://hk.jobsdb.com/hk'},
+      {title:"More", onClick:this.openMoreMenu}
     ];
     const secondaryMenuLinks = tenant === "jobsdb" ? [{title:"My Account"},
       {title:"Hong Kong (English)"}
@@ -41,9 +42,9 @@ export default class Menu extends Component {
     ];
     const thirdMenuLinks = {title:"Employer Site"};
     const moreMenu = [
-      {title: "Overseas Jobs"},
-      {title: "Fresh Grad Jobs"},
-      {title: "Classified Jobs"},
+      {title: 'Overseas Jobs', url: 'https://hk.jobsdb.com/hk'},
+      {title: "Fresh Grad Jobs", url: 'https://hk.jobsdb.com/hk'},
+      {title: "Classified Jobs", url: 'https://hk.jobsdb.com/hk'},
       {title: "Back",onClick:this.closeMoreMenu}
     ];
 
@@ -51,37 +52,35 @@ export default class Menu extends Component {
       <div className={classnames(styles.root, {
         [styles.showMenu]: shouldShowMenu
       })}>
-        <Card className={styles.headerMenu}>
-          <Section>
-            <Text whispering>JOB SEEKER</Text>
-          </Section>
-        </Card>
-        <ul className={styles.menuBody}>
+        <Section className={styles.headerMenu}>
+          <Text whisperingTitle>JOB SEEKER</Text>
+        </Section>
+        <div className={styles.menuBody}>
           {links.map(link => (
-          <li className={styles.menuItem} onClick={link.onClick}>
-            {link.title}
-          </li>
+            <MenuItem handleClick={link.onClick} linkUrl={link.url} ItemIcon={link.ItemIcon}>
+              <Text>{link.title}</Text>
+            </MenuItem>
           ))}
-        </ul>
-        <ul className={styles.menuBody}>
+        </div>
+        <div className={styles.menuBody}>
           {secondaryMenuLinks.map(link => (
-          <li className={styles.menuItem}>
-            {link.title}
-          </li>
+            <MenuItem linkUrl={link.url}>
+              <Text>{link.title}</Text>
+            </MenuItem>
           ))}
-        </ul>
-        <ul className={styles.menuBody}>
-          <li className={styles.menuItem}>
-            {thirdMenuLinks.title}
-          </li>
-        </ul>
-        <ul className={this.state.moreMenuOpen ? styles.showMoreMenu : styles.moreMenu}>
+        </div>
+        <div className={styles.menuBody}>
+          <MenuItem>
+            <Text>{thirdMenuLinks.title}</Text>
+          </MenuItem>
+        </div>
+        <div className={this.state.moreMenuOpen ? styles.showMoreMenu : styles.moreMenu}>
           {moreMenu.map(link => (
-          <li className={styles.menuItem} onClick={link.onClick}>
-            {link.title}
-          </li>
+            <MenuItem handleClick={link.onClick}>
+              <Text>{link.title}</Text>
+            </MenuItem>
           ))}
-        </ul>
+        </div>
       </div>
     );
   }

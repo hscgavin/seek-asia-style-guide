@@ -8,7 +8,7 @@
   width: 100%;
   height: 100%;
   z-index: @z-index-header-overlay;
-  background-color: @saGrey4;
+  background-color: @saGrey6;
 }
 
 .showMenu {
@@ -16,8 +16,11 @@
 }
 
 .headerMenu {
+  display: flex;
+  align-items: center;
+  height: @grid-base * 12;
   background-color: @saWhite;
-  margin-bottom: @grid-base;
+  border-bottom: 1px solid @saGrey5;
   color: @saGrey3;
 }
 
@@ -26,21 +29,13 @@
   background-color: @saWhite;
 }
 
-.menuItem {
-
-}
-
 .moreMenu {
+  &:extend(.root);
   display: none;
+  z-index: @z-index-header-overlay + 1;
 }
 
 .showMoreMenu {
+  &:extend(.moreMenu);
   display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: @z-index-header-overlay + 1;
-  background-color: @saWhite;
 }
