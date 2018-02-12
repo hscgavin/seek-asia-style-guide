@@ -5,7 +5,7 @@ import styles from './MenuItem.less';
 
 const withIcon = ({ ItemIcon, children }) => {
   return [
-    ...(ItemIcon ? [ItemIcon] : []), 
+    ...(ItemIcon ? [(<ItemIcon className={styles.icon} />)] : []), 
     children
   ];
 };
