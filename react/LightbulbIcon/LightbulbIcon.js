@@ -1,12 +1,12 @@
-import svgMarkup from './ProfileIcon.svg';
+import svgMarkup from './LightbulbIcon.svg';
 
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../private/Icon/Icon';
-import styles from './ProfileIcon.less';
+import styles from './LightbulbIcon.less';
 
-export default function ProfileIcon(props) {
+export default function LightbulbIcon(props) {
   return <Icon svgClassName={classnames(styles.iconSvg, props.svgClassName)} markup={svgMarkup} {...props} />;
 }
 
-ProfileIcon.displayName = 'ProfileIcon';
+LightbulbIcon.displayName = 'LightbulbIcon';

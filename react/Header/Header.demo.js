@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Header } from 'seek-asia-style-guide/react';
+import { ACTIVE_TAB_HOME, ACTIVE_TAB_SEARCH, ACTIVE_TAB_SAVED_JOBS } from './Header';
 import JobStreetLogo from 'seek-asia-style-guide/jobStreet/Logo/Logo';
 import JobsDBLogo from 'seek-asia-style-guide/jobsDB/Logo/Logo';
 
@@ -57,6 +58,40 @@ export default {
           transformProps: props => ({
             ...props,
             logoComponent: JobStreetLogo
+          })
+        }
+      ]
+    },
+    {
+      label: 'Active Tab',
+      type: 'radio',
+      states: [
+        {
+          label: 'None',
+          transformProps: props => ({
+            ...props,
+            activeTab: null
+          })
+        },
+        {
+          label: 'Home',
+          transformProps: props => ({
+            ...props,
+            activeTab: ACTIVE_TAB_HOME
+          })
+        },
+        {
+          label: 'Search',
+          transformProps: props => ({
+            ...props,
+            activeTab: ACTIVE_TAB_SEARCH
+          })
+        },
+        {
+          label: 'Saved Jobs',
+          transformProps: props => ({
+            ...props,
+            activeTab: ACTIVE_TAB_SAVED_JOBS
           })
         }
       ]

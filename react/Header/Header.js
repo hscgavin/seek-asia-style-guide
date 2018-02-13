@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import styles from './Header.less';
 import { HomeIcon, SearchIcon, BookmarkIcon, HamburgerIcon } from 'seek-asia-style-guide/react';
@@ -6,39 +6,66 @@ import Login from './components/Login/Login';
 import Menu from './components/Menu/Menu';
 import localization from './localization';
 
-const Header = ({ loginAvailable = true, logoComponent: LogoComponent, language, country, tenant }) => {
-  const messages = localization[tenant] && localization[tenant][`${language}-${country}`] ? localization[tenant][`${language}-${country}`] : {};
+export const ACTIVE_TAB_HOME = "HOME";
+export const ACTIVE_TAB_SEARCH = "SEARCH";
+export const ACTIVE_TAB_SAVED_JOBS = "SAVED_JOBS";
 
-  return (
-    <header className={styles.root}>
-      <div className={styles.externalNav}>
-        Language/Country - Employer Link
-      </div>
-      <div className={loginAvailable ? styles.primaryNav : styles.primaryNavNoLogin}>
-        <LogoComponent />
-        { loginAvailable && (<Login />) }
-      </div>
-      <div className={styles.actionTray}>
-        <div>
-          <a href={messages['header.homeUrl']}>
-            <HomeIcon svgClassName={styles.svg} />
-          </a>
-        </div>
-        <div>
-          <SearchIcon svgClassName={styles.svg} />
-        </div>
-        { loginAvailable && (
-          <div>
-            <BookmarkIcon svgClassName={styles.svg} />
-          </div>
-        )}
-        <div>
-          <HamburgerIcon svgClassName={styles.svg} />
-        </div>
-      </div>
-      <Menu />
-    </header>
+const actionTrayLink = ({ linkUrl, LinkIcon, activeTab, tabName, menuOpen }) => {
+  return !menuOpen && activeTab === tabName ? (
+    <LinkIcon svgClassName={styles.activeIcon} />
+  ) : (
+    <a href={linkUrl}>
+      <LinkIcon svgClassName={styles.svg} />
+    </a>
   )
-};
+}
 
-export default Header;
+export default class Header extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      menuOpen: false
+    };
+  }
+
+  toggleMenu = () => {
+    this.setState({ menuOpen: !this.state.menuOpen });
+  };
+  
+  render () {
+    const { loginAvailable = true, logoComponent: LogoComponent, language, country, tenant, activeTab } = this.props;
+    const messages = localization[tenant] && localization[tenant][`${language}-${country}`] ? localization[tenant][`${language}-${country}`] : {};
+
+    const menuOpen = this.state.menuOpen;
+
+    return (
+      <header className={styles.root}>
+        <div className={styles.externalNav}>
+          Language/Country - Employer Link
+        </div>
+        <div className={loginAvailable ? styles.primaryNav : styles.primaryNavNoLogin}>
+          <LogoComponent />
+          { loginAvailable && (<Login />) }
+        </div>
+        <div className={styles.actionTray}>
+          <div>
+            { actionTrayLink({ LinkIcon: HomeIcon, linkUrl: messages['header.homeUrl'], activeTab, tabName: ACTIVE_TAB_HOME, menuOpen }) }
+          </div>
+          <div>
+            { actionTrayLink({ LinkIcon: SearchIcon, linkUrl: messages['header.homeUrl'], activeTab, tabName: ACTIVE_TAB_SEARCH, menuOpen }) }
+          </div>
+          { loginAvailable && (
+            <div>
+              { actionTrayLink({ LinkIcon: BookmarkIcon, linkUrl: messages['header.homeUrl'], activeTab, tabName: ACTIVE_TAB_SAVED_JOBS, menuOpen }) }
+            </div>
+          )}
+          <div onClick={this.toggleMenu} className={styles.menuToggle}>
+            <HamburgerIcon svgClassName={menuOpen ? styles.activeIcon : styles.svg} />
+          </div>
+        </div>
+        <Menu shouldShowMenu={menuOpen} />
+      </header>
+    )
+  }
+}

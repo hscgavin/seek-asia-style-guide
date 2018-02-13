@@ -51,8 +51,17 @@
   }
 }
 
+.menuToggle {
+  cursor: pointer;
+}
+
 .svg {
   fill: @saGrey4;
   width: @grid-base * 6;
   height: @grid-base * 6;
+}
+
+.activeIcon {
+  &:extend(.svg);
+  fill: @jsBlue;
 }
