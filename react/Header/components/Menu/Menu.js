@@ -2,52 +2,61 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import styles from './Menu.less';
 import MenuItem from './components/MenuItem/MenuItem';
-import { Text, Section, HomeIcon, PortalIcon, CompanyIcon, LightbulbIcon, EducationIcon, MoreIcon, ProfileIcon } from 'seek-asia-style-guide/react';
+import { Text, Section, MoreIcon, ChevronIcon } from 'seek-asia-style-guide/react';
 
 export default class Menu extends Component {
   constructor() {
     super();
 
     this.state = {
-      moreMenuOpen: false
+      moreMenuOpen: false,
+      localesMenuOpen: false
     };
   }
 
-  openMoreMenu = () => {
-    this.setState({ moreMenuOpen: true });
+  toggleMoreMenu = () => {
+    this.setState({ moreMenuOpen: !this.state.moreMenuOpen });
+  }
+
+  toggleLocalesMenu = () => {
+    this.setState({ localesMenuOpen: !this.state.localesMenuOpen });
   };
 
-  closeMoreMenu = () => {
-    this.setState({ moreMenuOpen: false });
-  };
+  renderMenuLinks = ({ links, locales, more, messages }) => {
+
+    if (links && links.map) {
+      return links.map((linksList, index) => {
+        const menuItems = linksList.map ? linksList.map(link => (
+          <MenuItem linkUrl={link.url} ItemIcon={link.ItemIcon}>
+            <Text>{link.title}</Text>
+          </MenuItem>
+        )) : [];
+        if (more && index === 0) {
+          menuItems.push((
+            <MenuItem handleClick={this.toggleMoreMenu} ItemIcon={MoreIcon}>
+              <Text>{messages['menu.more']}</Text>
+            </MenuItem>
+          ))
+        }
+        if (locales && locales.length && index === 1) {
+          menuItems.push((
+            <MenuItem handleClick={this.toggleLocalesMenu} ItemIcon={locales[0].ItemIcon}>
+              <Text>{locales[0].title}</Text>
+            </MenuItem>
+          ));
+        }
+        return (
+          <div className={styles.menuBody}>
+            {menuItems}
+          </div>
+        )
+      });
+    }
+  }
 
   render() {
-    const { messages, shouldShowMenu, loginAvailable, tenant } = this.props;
-  
-    const links = tenant === "jobsdb" ? [{title:"Home", url: 'https://hk.jobsdb.com/hk', ItemIcon: HomeIcon },
-      {title:"MyJobsDB", url: 'https://hk.jobsdb.com/hk', ItemIcon: PortalIcon},
-      {title:"Resources", url: 'https://hk.jobsdb.com/hk'},
-      {title:"Career Insights", url: 'https://hk.jobsdb.com/hk', ItemIcon: LightbulbIcon}
-    ] : [{title:"Home", url: 'https://hk.jobsdb.com/hk', ItemIcon: HomeIcon},
-      {title:"MyJobsStreet", url: 'https://hk.jobsdb.com/hk', ItemIcon: PortalIcon},
-      {title:"Company Profiles", url: 'https://hk.jobsdb.com/hk', ItemIcon: CompanyIcon },
-      {title:"Career Insights", url: 'https://hk.jobsdb.com/hk', ItemIcon: LightbulbIcon},
-      {title:"Education", url: 'https://hk.jobsdb.com/hk', ItemIcon: EducationIcon},
-      {title:"More", onClick:this.openMoreMenu, ItemIcon: MoreIcon }
-    ];
-    const secondaryMenuLinks = tenant === "jobsdb" ? [{title:"My Account", ItemIcon: ProfileIcon},
-      {title:"Hong Kong (English)"}
-    ] : [{title:"Log In / Sign Up", ItemIcon: ProfileIcon},
-      {title:"Hong Kong (English)"}
-    ];
-    const thirdMenuLinks = {title:"Employer Site"};
-    const moreMenu = [
-      {title: 'Overseas Jobs', url: 'https://hk.jobsdb.com/hk'},
-      {title: "Fresh Grad Jobs", url: 'https://hk.jobsdb.com/hk'},
-      {title: "Classified Jobs", url: 'https://hk.jobsdb.com/hk'},
-      {title: "Back",onClick:this.closeMoreMenu}
-    ];
-
+    const { messages, shouldShowMenu, loginAvailable, links, locales, more } = this.props;
+    
     return (
       <div className={classnames(styles.root, {
         [styles.showMenu]: shouldShowMenu
@@ -55,28 +64,28 @@ export default class Menu extends Component {
         <Section className={styles.headerMenu}>
           <Text whisperingTitle>JOB SEEKER</Text>
         </Section>
-        <div className={styles.menuBody}>
-          {links.map(link => (
-            <MenuItem handleClick={link.onClick} linkUrl={link.url} ItemIcon={link.ItemIcon}>
-              <Text>{link.title}</Text>
-            </MenuItem>
-          ))}
-        </div>
-        <div className={styles.menuBody}>
-          {secondaryMenuLinks.map(link => (
+        { 
+          this.renderMenuLinks({ links, locales, more, messages }) 
+        }
+        <div className={this.state.moreMenuOpen ? styles.showSubMenu : styles.subMenu}>
+          <MenuItem handleClick={this.toggleMoreMenu} ItemIcon={ChevronIcon} iconProps={{ direction: 'left' }}>
+              <Text>{messages['menu.backToMenu']}</Text>
+          </MenuItem>
+          <Section className={styles.headerMenu}>
+            <Text whisperingTitle>MORE</Text>
+          </Section>
+          {more && more.map && more.map(link => (
             <MenuItem linkUrl={link.url} ItemIcon={link.ItemIcon}>
               <Text>{link.title}</Text>
             </MenuItem>
           ))}
         </div>
-        <div className={styles.menuBody}>
-          <MenuItem>
-            <Text>{thirdMenuLinks.title}</Text>
+        <div className={this.state.localesMenuOpen ? styles.showSubMenu : styles.subMenu}>
+          <MenuItem handleClick={this.toggleLocalesMenu} ItemIcon={ChevronIcon} iconProps={{ direction: 'left' }}>
+              <Text>{messages['menu.backToMenu']}</Text>
           </MenuItem>
-        </div>
-        <div className={this.state.moreMenuOpen ? styles.showMoreMenu : styles.moreMenu}>
-          {moreMenu.map(link => (
-            <MenuItem handleClick={link.onClick}>
+          {locales && locales.map && locales.map((link, index) => (
+            <MenuItem linkUrl={index > 0 ? link.url : null} ItemIcon={link.ItemIcon}>
               <Text>{link.title}</Text>
             </MenuItem>
           ))}

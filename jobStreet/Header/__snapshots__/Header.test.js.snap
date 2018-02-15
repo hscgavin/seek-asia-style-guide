@@ -176,6 +176,7 @@ exports[`JobStreet header component Authentication status should render when pen
         >
           <Logo
             className="logo"
+            country="my"
             svgClassName=""
           />
         </a>
@@ -489,6 +490,7 @@ exports[`JobStreet header component Authentication status should render with aut
         >
           <Logo
             className="logo"
+            country="my"
             svgClassName=""
           />
         </a>
@@ -777,6 +779,7 @@ exports[`JobStreet header component Authentication status should render with una
         >
           <Logo
             className="logo"
+            country="my"
             svgClassName=""
           />
         </a>
@@ -798,7 +801,7 @@ exports[`JobStreet header component Authentication status should render with una
 </header>
 `;
 
-exports[`JobStreet header component Localisation should render en-my 1`] = `
+exports[`JobStreet header component Localization should render en-my 1`] = `
 <header
   aria-label="Primary navigation"
   className="root"
@@ -1065,6 +1068,7 @@ exports[`JobStreet header component Localisation should render en-my 1`] = `
         >
           <Logo
             className="logo"
+            country="my"
             svgClassName=""
           />
         </a>

@@ -3,28 +3,29 @@ import classnames from 'classnames';
 import { Button } from 'seek-asia-style-guide/react';
 import styles from './MenuItem.less';
 
-const withIcon = ({ ItemIcon, children }) => {
+const withIcon = ({ ItemIcon, children, iconProps={} }) => {
   return [
-    ...(ItemIcon ? [(<ItemIcon className={styles.icon} />)] : []), 
+    ...(ItemIcon ? [(<ItemIcon className={styles.icon} {...iconProps} />)] : []), 
     children
   ];
 };
 
-const interactionButton = ({ ItemIcon, children, ...restProps }) => {
+const interactionButton = ({ ItemIcon, children, iconProps, ...restProps }) => {
   return (
     <Button {...restProps}>
-      { withIcon({ ItemIcon, children }) }
+      { withIcon({ ItemIcon, children, iconProps }) }
     </Button>
   );
 }
 
-const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon }) => {
+const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon, iconProps }) => {
 
   const interactionProps = {
     color: "transparent",
     className: styles.interaction,
     children,
-    ItemIcon
+    ItemIcon,
+    iconProps
   };
 
   if (linkUrl) {
@@ -42,15 +43,15 @@ const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon }) => {
 
   return (
     <span className={styles.item}>
-      { withIcon({ ItemIcon, children }) }
+      { withIcon({ ItemIcon, children, iconProps }) }
     </span>
   );
 };
 
-const MenuItem = ({ handleClick, className, linkUrl, ItemIcon, children }) => {
+const MenuItem = ({ className, ...restProps }) => {
   return (
     <div className={classnames(styles.root, className)}>
-      {renderInteraction({ linkUrl, handleClick, ItemIcon, children })}
+      {renderInteraction({ ...restProps })}
     </div>
   )
 };

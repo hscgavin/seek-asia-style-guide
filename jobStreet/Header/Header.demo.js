@@ -39,12 +39,37 @@ export default {
   },
   options: [
     {
-      label: 'Language',
+      label: 'Locale',
       type: 'radio',
       states: [
         {
           label: 'en-MY',
-          transformProps: props => props
+          transformProps: props => ({
+            ...props,
+            language: 'en',
+            country: 'MY'
+          })
+        }, {
+          label: 'en-ID',
+          transformProps: props => ({
+            ...props,
+            language: 'en',
+            country: 'ID'
+          })
+        }, {
+          label: 'en-SG',
+          transformProps: props => ({
+            ...props,
+            language: 'en',
+            country: 'SG'
+          })
+        }, {
+          label: 'en-PH',
+          transformProps: props => ({
+            ...props,
+            language: 'en',
+            country: 'PH'
+          })
         }
       ]
     },

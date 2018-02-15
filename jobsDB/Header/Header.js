@@ -1,121 +1,67 @@
-import React, { Component } from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import React from 'react';
 
+import { Header as GlobalHeader } from 'seek-asia-style-guide/react';
 import Logo from '../Logo/Logo';
-import Button from 'seek-asia-style-guide/react/Button/Button';
-import MenuIcon from 'seek-asia-style-guide/react/HamburgerIcon/HamburgerIcon';
-import Nav from './components/Nav/Nav';
-import styles from './header.less';
-import links from './links';
+import { HomeIcon, PortalIcon, CompanyIcon, LightbulbIcon, EducationIcon, ProfileIcon, ResourcesIcon, FlagHKIcon, FlagIDIcon, FlagSGIcon, FlagTHIcon } from 'seek-asia-style-guide/react';
+import { getLocalization } from '../localization';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isNavActive: false
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
-  componentWillUnmount() {
-    document.removeEventListener('click', this.handleClick, false);
-  }
-  handleClick(e) {
-    const userClickedOutsideOfDropdown = !this.dropdownNode.contains(e.target);
-    if (userClickedOutsideOfDropdown) {
-      this.showNav(false);
+const getJobsDBProps = ({ country, language, loginAvailable }) => {
+  const messages = getLocalization({ country, language });
+
+  const links = [];
+  links.push([   // first group of links
+      { title: messages['header.homeTitle'], url: messages['header.homeUrl'], ItemIcon: HomeIcon },
+      { title: messages['header.myJobsDBTitle'], url: messages['header.myJobsDBUrl'], ItemIcon: PortalIcon },
+      { title: messages['header.resourcesTitle'], url: messages['header.resourcesUrl'], ItemIcon: ResourcesIcon },
+      { title: messages['header.careerInsightsTitle'], url: messages['header.careerInsightsUrl'], ItemIcon: LightbulbIcon } 
+  ]);
+  
+  links.push(  // second group of links, login awareness goes here 
+    loginAvailable ? 
+      [ { title: messages['header.myAccountTitle'], url: messages['header.myAccountUrl'], ItemIcon: ProfileIcon } ] :
+      []
+  );
+
+  links.push([
+    { title: messages['header.employerSiteTitle'], url: messages['header.employerSiteUrl'] }
+  ]);
+
+  const locales = [
+    {
+      title: 'Hong Kong (English)',
+      ItemIcon: FlagHKIcon,
+      url: 'https://hk.jobsdb.com/hk'
+    }, {
+      title: 'Singapore (English)',
+      ItemIcon: FlagSGIcon,
+      url: 'https://hk.jobsdb.com/hk'
+    }, {
+      title: 'Indonesia (English)',
+      ItemIcon: FlagIDIcon,
+      url: 'https://hk.jobsdb.com/hk'
+    }, {
+      title: 'Thailand (English)',
+      ItemIcon: FlagTHIcon,
+      url: 'https://hk.jobsdb.com/hk'
     }
+  ];
+
+  return {
+    links,
+    locales,
+    messages
   }
-  showNav(shouldShowNav) {
-    const eventAction = shouldShowNav ?
-      'addEventListener' :
-      'removeEventListener';
-    document[eventAction]('click', this.handleClick, false);
-    this.setState({
-      isNavActive: shouldShowNav
-    });
-  }
-  render() {
-    const { user } = this.props;
-    const { isNavActive } = this.state;
-    const userLinks = links.getUserLinks(user.candidate);
+};
 
-    return (
-      <header
-        className={styles.root}
-        role="banner"
-        aria-label="Primary navigation">
-        <section className={styles.content}>
-          <div className={styles.container}>
-            <button
-              className={styles.toggle}
-              onClick={() => {
-                if (!isNavActive) {
-                  this.showNav(true);
-                }
-              }}>
-              <MenuIcon />
-            </button>
-
-            <div
-              className={styles.navWrapper}
-              ref={node => {
-                this.dropdownNode = node;
-              }}>
-              <div
-                className={classNames({
-                  [styles.navContainer]: true,
-                  [styles.navContainerHide]: !isNavActive
-                })}>
-                <Nav key={'navLinks'} links={links.navLinks} />
-                <Nav key={'userLinks'} links={userLinks} />
-              </div>
-            </div>
-
-            <ul className={styles.navbarUniversalLogin}>
-              <li>
-                <Button
-                  className={styles.employerLink}
-                  key={'employerLinks'}
-                  color="hyperlink"
-                  component="a">
-                  Employer site
-                </Button>
-              </li>
-              <li>
-                <Button
-                  className={styles.loginLink}
-                  key={'navLinks'}
-                  color="hyperlink"
-                  component="a">
-                  Log in
-                </Button>
-              </li>
-              <li>
-                <Button key={'userLinks'} color="hyperlink" component="a">
-                  Sign up
-                </Button>
-              </li>
-            </ul>
-
-            <div className={styles.bannerWrapper}>
-              <div className={styles.bannerContainer}>
-                <div className={styles.banner}>
-                  <a className={styles.logoLink} href="/">
-                    <Logo svgClassName={styles.logoSvg} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </header>
-    );
-  }
-}
-
-Header.propTypes = {
-  user: PropTypes.object.isRequired
+const Header = ({ country, language, activeTab, loginAvailable=true }) => {
+  return (
+    <GlobalHeader 
+      LogoComponent={Logo}
+      activeTab={activeTab}
+      loginAvailable={loginAvailable}
+      {...getJobsDBProps({ country, language, loginAvailable })}
+    />
+  );
 };
 
 export default Header;

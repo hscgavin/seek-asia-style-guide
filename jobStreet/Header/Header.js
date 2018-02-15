@@ -78,7 +78,7 @@ class Header extends Component {
       userLinks = links.getLoggedOutUserLinks();
     }
     const navLinks = links.getNavLinks(username, userToken);
-    const messages = localization[`${language}-${country}`];
+    const messages = localization[`${language}-${country.toLowerCase()}`];
 
     return (
       <header
@@ -115,7 +115,7 @@ class Header extends Component {
             </Button>
             <div className={styles.logoContainer}>
               <a href="/" title={messages['header.homeTitle']}>
-                <Logo className={styles.logo} />
+                <Logo className={styles.logo} country={country} />
               </a>
             </div>
             <a

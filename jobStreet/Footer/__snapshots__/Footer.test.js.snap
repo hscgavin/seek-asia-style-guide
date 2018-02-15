@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Footer component Localisation should render en-id 1`] = `
+exports[`Footer component Localization should render en-id 1`] = `
 <footer
   className="container"
 >
@@ -26,6 +26,54 @@ exports[`Footer component Localisation should render en-id 1`] = `
         "footer.siteMapLinkText": "Site Map",
         "footer.termsLink": "https://jobstreet.co.id/en/about-us/terms-of-use/",
         "footer.termsLinkText": "Term of Use",
+        "header.careerInsightsLink": "https://jobstreet.co.id/en/career-insights",
+        "header.careerInsightsText": "Career Insights",
+        "header.careerInsightsTitle": "JobStreet.com Malaysia - Career Insights",
+        "header.classifiedJobsLink": "https://www.jobstreet.com.my/en/job-search/classified-ads.php",
+        "header.classifiedJobsText": "Classified Jobs",
+        "header.classifiedJobsTitle": "",
+        "header.companyProfilesLink": "https://jobstreet.co.id/en/companies",
+        "header.companyProfilesText": "Company Profiles",
+        "header.companyProfilesTitle": "JobStreet.com Malaysia - Company Profiles",
+        "header.employerLink": "https://jobstreet.co.id/en/cms/employer",
+        "header.employerText": "Employer",
+        "header.employerTitle": "Post a Job Ad: +603-2176 0333",
+        "header.freshGradJobsLink": "https://www.jobstreet.com.my/en/job-search/campus/job-vacancy.php",
+        "header.freshGradJobsText": "Fresh Grad Jobs",
+        "header.freshGradJobsTitle": "",
+        "header.helpLink": "https://myjobstreet.jobstreet.com.my/home/help.php?",
+        "header.helpText": "Help",
+        "header.helpTitle": "",
+        "header.homeLink": "https://jobstreet.co.id",
+        "header.homeText": "Home",
+        "header.homeTitle": "Leading Job Site in Malaysia - Find Jobs in Malaysia",
+        "header.jobStreetEducationLink": "https://www.jobstreeteducation.com.my/",
+        "header.jobStreetEducationText": "Education",
+        "header.jobStreetEducationTitle": "",
+        "header.loginLink": "https://myjobstreet.jobstreet.com.my/home/login.php?site=my&language_code=3",
+        "header.loginText": "Log In",
+        "header.loginTitle": "",
+        "header.logoutLink": "https://myjobstreet.jobstreet.com.my/home/logout.php?",
+        "header.logoutText": "Logout",
+        "header.logoutTitle": "",
+        "header.moreText": "More",
+        "header.moreTitle": "",
+        "header.myAccountLink": "https://myjobstreet.jobstreet.com.my/registration/update-account.php?",
+        "header.myAccountText": "My Account",
+        "header.myAccountTitle": "",
+        "header.myJobStreetLink": "https://myjobstreet.jobstreet.com.my/home/login.php?site=my",
+        "header.myJobStreetLoggedInLink": "https://myjobstreet.jobstreet.com.my/resume/preview-resume.php?",
+        "header.myJobStreetText": "MyJobStreet",
+        "header.myJobStreetTitle": "Post Resume, Signup for Job Alert & Apply for Jobs @ MyJobStreet Malaysia",
+        "header.overseasJobsLink": "https://www.jobstreet.com.my/en/job-search/browse/find-overseas-jobs",
+        "header.overseasJobsText": "Overseas Jobs",
+        "header.overseasJobsTitle": "",
+        "header.searchLink": "https://srp-alpha.jobstreet.com",
+        "header.searchText": "Search Jobs",
+        "header.searchTitle": "Search Jobs @ Job Search JobStreet.com Malaysia",
+        "header.signUpLink": "https://myjobstreet.jobstreet.com.my/registration/simple-signup.php?site=my&language_code=3",
+        "header.signUpText": "Sign Up",
+        "header.signUpTitle": "",
       }
     }
   />
@@ -37,7 +85,7 @@ exports[`Footer component Localisation should render en-id 1`] = `
 </footer>
 `;
 
-exports[`Footer component Localisation should render en-my 1`] = `
+exports[`Footer component Localization should render en-my 1`] = `
 <footer
   className="container"
 >
@@ -122,7 +170,7 @@ exports[`Footer component Localisation should render en-my 1`] = `
 </footer>
 `;
 
-exports[`Footer component Localisation should render en-ph 1`] = `
+exports[`Footer component Localization should render en-ph 1`] = `
 <footer
   className="container"
 >
@@ -148,6 +196,54 @@ exports[`Footer component Localisation should render en-ph 1`] = `
         "footer.siteMapLinkText": "Site Map",
         "footer.termsLink": "https://jobstreet.com.ph/en/about-us/terms-of-use/",
         "footer.termsLinkText": "Term of Use",
+        "header.careerInsightsLink": "https://jobstreet.com.ph/en/career-insights",
+        "header.careerInsightsText": "Career Insights",
+        "header.careerInsightsTitle": "JobStreet.com Malaysia - Career Insights",
+        "header.classifiedJobsLink": "https://www.jobstreet.com.my/en/job-search/classified-ads.php",
+        "header.classifiedJobsText": "Classified Jobs",
+        "header.classifiedJobsTitle": "",
+        "header.companyProfilesLink": "https://jobstreet.com.ph/en/companies",
+        "header.companyProfilesText": "Company Profiles",
+        "header.companyProfilesTitle": "JobStreet.com Malaysia - Company Profiles",
+        "header.employerLink": "https://jobstreet.com.ph/en/cms/employer",
+        "header.employerText": "Employer",
+        "header.employerTitle": "Post a Job Ad: +603-2176 0333",
+        "header.freshGradJobsLink": "https://www.jobstreet.com.my/en/job-search/campus/job-vacancy.php",
+        "header.freshGradJobsText": "Fresh Grad Jobs",
+        "header.freshGradJobsTitle": "",
+        "header.helpLink": "https://myjobstreet.jobstreet.com.my/home/help.php?",
+        "header.helpText": "Help",
+        "header.helpTitle": "",
+        "header.homeLink": "https://jobstreet.com.ph",
+        "header.homeText": "Home",
+        "header.homeTitle": "Leading Job Site in Malaysia - Find Jobs in Malaysia",
+        "header.jobStreetEducationLink": "https://www.jobstreeteducation.com.my/",
+        "header.jobStreetEducationText": "Education",
+        "header.jobStreetEducationTitle": "",
+        "header.loginLink": "https://myjobstreet.jobstreet.com.my/home/login.php?site=my&language_code=3",
+        "header.loginText": "Log In",
+        "header.loginTitle": "",
+        "header.logoutLink": "https://myjobstreet.jobstreet.com.my/home/logout.php?",
+        "header.logoutText": "Logout",
+        "header.logoutTitle": "",
+        "header.moreText": "More",
+        "header.moreTitle": "",
+        "header.myAccountLink": "https://myjobstreet.jobstreet.com.my/registration/update-account.php?",
+        "header.myAccountText": "My Account",
+        "header.myAccountTitle": "",
+        "header.myJobStreetLink": "https://myjobstreet.jobstreet.com.my/home/login.php?site=my",
+        "header.myJobStreetLoggedInLink": "https://myjobstreet.jobstreet.com.my/resume/preview-resume.php?",
+        "header.myJobStreetText": "MyJobStreet",
+        "header.myJobStreetTitle": "Post Resume, Signup for Job Alert & Apply for Jobs @ MyJobStreet Malaysia",
+        "header.overseasJobsLink": "https://www.jobstreet.com.my/en/job-search/browse/find-overseas-jobs",
+        "header.overseasJobsText": "Overseas Jobs",
+        "header.overseasJobsTitle": "",
+        "header.searchLink": "https://srp-alpha.jobstreet.com",
+        "header.searchText": "Search Jobs",
+        "header.searchTitle": "Search Jobs @ Job Search JobStreet.com Malaysia",
+        "header.signUpLink": "https://myjobstreet.jobstreet.com.my/registration/simple-signup.php?site=my&language_code=3",
+        "header.signUpText": "Sign Up",
+        "header.signUpTitle": "",
       }
     }
   />
@@ -159,7 +255,7 @@ exports[`Footer component Localisation should render en-ph 1`] = `
 </footer>
 `;
 
-exports[`Footer component Localisation should render en-sg 1`] = `
+exports[`Footer component Localization should render en-sg 1`] = `
 <footer
   className="container"
 >
@@ -185,6 +281,54 @@ exports[`Footer component Localisation should render en-sg 1`] = `
         "footer.siteMapLinkText": "Site Map",
         "footer.termsLink": "https://jobstreet.com.sg/en/about-us/terms-of-use/",
         "footer.termsLinkText": "Term of Use",
+        "header.careerInsightsLink": "https://jobstreet.com.sg/en/career-insights",
+        "header.careerInsightsText": "Career Insights",
+        "header.careerInsightsTitle": "JobStreet.com Malaysia - Career Insights",
+        "header.classifiedJobsLink": "https://www.jobstreet.com.my/en/job-search/classified-ads.php",
+        "header.classifiedJobsText": "Classified Jobs",
+        "header.classifiedJobsTitle": "",
+        "header.companyProfilesLink": "https://jobstreet.com.sg/en/companies",
+        "header.companyProfilesText": "Company Profiles",
+        "header.companyProfilesTitle": "JobStreet.com Malaysia - Company Profiles",
+        "header.employerLink": "https://jobstreet.com.sg/en/cms/employer",
+        "header.employerText": "Employer",
+        "header.employerTitle": "Post a Job Ad: +603-2176 0333",
+        "header.freshGradJobsLink": "https://www.jobstreet.com.my/en/job-search/campus/job-vacancy.php",
+        "header.freshGradJobsText": "Fresh Grad Jobs",
+        "header.freshGradJobsTitle": "",
+        "header.helpLink": "https://myjobstreet.jobstreet.com.my/home/help.php?",
+        "header.helpText": "Help",
+        "header.helpTitle": "",
+        "header.homeLink": "https://jobstreet.com.sg",
+        "header.homeText": "Home",
+        "header.homeTitle": "Leading Job Site in Malaysia - Find Jobs in Malaysia",
+        "header.jobStreetEducationLink": "https://www.jobstreeteducation.com.my/",
+        "header.jobStreetEducationText": "Education",
+        "header.jobStreetEducationTitle": "",
+        "header.loginLink": "https://myjobstreet.jobstreet.com.my/home/login.php?site=my&language_code=3",
+        "header.loginText": "Log In",
+        "header.loginTitle": "",
+        "header.logoutLink": "https://myjobstreet.jobstreet.com.my/home/logout.php?",
+        "header.logoutText": "Logout",
+        "header.logoutTitle": "",
+        "header.moreText": "More",
+        "header.moreTitle": "",
+        "header.myAccountLink": "https://myjobstreet.jobstreet.com.my/registration/update-account.php?",
+        "header.myAccountText": "My Account",
+        "header.myAccountTitle": "",
+        "header.myJobStreetLink": "https://myjobstreet.jobstreet.com.my/home/login.php?site=my",
+        "header.myJobStreetLoggedInLink": "https://myjobstreet.jobstreet.com.my/resume/preview-resume.php?",
+        "header.myJobStreetText": "MyJobStreet",
+        "header.myJobStreetTitle": "Post Resume, Signup for Job Alert & Apply for Jobs @ MyJobStreet Malaysia",
+        "header.overseasJobsLink": "https://www.jobstreet.com.my/en/job-search/browse/find-overseas-jobs",
+        "header.overseasJobsText": "Overseas Jobs",
+        "header.overseasJobsTitle": "",
+        "header.searchLink": "https://srp-alpha.jobstreet.com",
+        "header.searchText": "Search Jobs",
+        "header.searchTitle": "Search Jobs @ Job Search JobStreet.com Malaysia",
+        "header.signUpLink": "https://myjobstreet.jobstreet.com.my/registration/simple-signup.php?site=my&language_code=3",
+        "header.signUpText": "Sign Up",
+        "header.signUpTitle": "",
       }
     }
   />
@@ -196,7 +340,7 @@ exports[`Footer component Localisation should render en-sg 1`] = `
 </footer>
 `;
 
-exports[`Footer component Localisation should render en-vn 1`] = `
+exports[`Footer component Localization should render en-vn 1`] = `
 <footer
   className="container"
 >
@@ -233,7 +377,7 @@ exports[`Footer component Localisation should render en-vn 1`] = `
 </footer>
 `;
 
-exports[`Footer component Localisation should render id-id 1`] = `
+exports[`Footer component Localization should render id-id 1`] = `
 <footer
   className="container"
 >
@@ -270,7 +414,7 @@ exports[`Footer component Localisation should render id-id 1`] = `
 </footer>
 `;
 
-exports[`Footer component Localisation should render vi-vn 1`] = `
+exports[`Footer component Localization should render vi-vn 1`] = `
 <footer
   className="container"
 >

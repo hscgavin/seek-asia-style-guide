@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Header } from 'seek-asia-style-guide/react';
 import { ACTIVE_TAB_HOME, ACTIVE_TAB_SEARCH, ACTIVE_TAB_SAVED_JOBS } from './Header';
-import JobStreetLogo from 'seek-asia-style-guide/jobStreet/Logo/Logo';
-import JobsDBLogo from 'seek-asia-style-guide/jobsDB/Logo/Logo';
+import { jobsDBProps, jobStreetProps } from './Header.demo.props';
 
 const HeaderContainer = ({ component: DemoComponent, componentProps }) => {
   return (
@@ -22,11 +21,10 @@ export default {
   component: Header,
   container: HeaderContainer,
   initialProps: {
+    ...jobsDBProps,
     loginAvailable: true,
-    logoComponent: JobsDBLogo,
     country: 'hk',
-    language: 'en',
-    tenant: 'jobsDB'
+    language: 'en'
   },
   options: [
     {
@@ -43,21 +41,21 @@ export default {
       ]
     },
     {
-      label: 'Logo',
+      label: 'tenant',
       type: 'radio',
       states: [
         {
           label: 'JobsDB',
           transformProps: props => ({
             ...props,
-            logoComponent: JobsDBLogo
+            ...jobsDBProps
           })
         },
         {
           label: 'JobStreet',
           transformProps: props => ({
             ...props,
-            logoComponent: JobStreetLogo
+            ...jobStreetProps
           })
         }
       ]

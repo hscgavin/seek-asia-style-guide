@@ -8,7 +8,7 @@ import {
 } from 'seek-asia-style-guide/react/private/authStatusTypes';
 
 describe('JobStreet header component', () => {
-  describe('Localisation', () => {
+  describe('Localization', () => {
     it('should render en-my', () => {
       const wrapper = shallow(
         <Header

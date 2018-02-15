@@ -6,7 +6,7 @@ import enVnLocalisation from './en-vn';
 import idIdLocalisation from './id-id';
 import viVnLocalisation from './vi-vn';
 
-export default {
+const localization = {
   'en-my': enMyLocalisation,
   'en-sg': enSgLocalisation,
   'en-ph': enPhLocalisation,
@@ -15,3 +15,10 @@ export default {
   'id-id': idIdLocalisation,
   'vi-vn': viVnLocalisation
 };
+
+export const getLocalization = ({ language, country }) => {
+  return localization[`${language.toLowerCase()}-${country.toLowerCase()}`] ?
+    localization[`${language.toLowerCase()}-${country.toLowerCase()}`] : {};
+};
+
+export default localization;

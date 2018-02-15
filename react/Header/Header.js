@@ -4,7 +4,6 @@ import styles from './Header.less';
 import { HomeIcon, SearchIcon, BookmarkIcon, HamburgerIcon } from 'seek-asia-style-guide/react';
 import Login from './components/Login/Login';
 import Menu from './components/Menu/Menu';
-import localization from './localization';
 
 export const ACTIVE_TAB_HOME = "HOME";
 export const ACTIVE_TAB_SEARCH = "SEARCH";
@@ -34,9 +33,8 @@ export default class Header extends Component {
   };
   
   render () {
-    const { loginAvailable = true, logoComponent: LogoComponent, language, country, tenant, activeTab } = this.props;
-    const messages = localization[tenant] && localization[tenant][`${language}-${country}`] ? localization[tenant][`${language}-${country}`] : {};
-
+    const { loginAvailable = true, LogoComponent, activeTab, links, more, locales, messages } = this.props;
+    
     const menuOpen = this.state.menuOpen;
 
     return (
@@ -64,7 +62,7 @@ export default class Header extends Component {
             <HamburgerIcon svgClassName={menuOpen ? styles.activeIcon : styles.svg} />
           </div>
         </div>
-        <Menu shouldShowMenu={menuOpen} />
+        <Menu shouldShowMenu={menuOpen} messages={messages} links={links} more={more} locales={locales} />
       </header>
     )
   }
