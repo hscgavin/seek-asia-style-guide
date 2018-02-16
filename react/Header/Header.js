@@ -9,12 +9,6 @@ export const ACTIVE_TAB_HOME = "HOME";
 export const ACTIVE_TAB_SEARCH = "SEARCH";
 export const ACTIVE_TAB_SAVED_JOBS = "SAVED_JOBS";
 
-export const HeaderSpacer = () => {
-  return (
-    <div className={styles.actionTraySpacer}></div>
-  )
-}
-
 const actionTrayLink = ({ linkUrl, LinkIcon, activeTab, tabName, menuOpen }) => {
   return !menuOpen && activeTab === tabName ? (
     <LinkIcon svgClassName={styles.activeIcon} />
