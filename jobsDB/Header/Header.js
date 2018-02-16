@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Header as GlobalHeader } from 'seek-asia-style-guide/react';
 import Logo from '../Logo/Logo';
-import { HomeIcon, PortalIcon, CompanyIcon, LightbulbIcon, EducationIcon, ProfileIcon, ResourcesIcon, FlagHKIcon, FlagIDIcon, FlagSGIcon, FlagTHIcon } from 'seek-asia-style-guide/react';
-import { getLocalization } from '../localization';
+import { HomeIcon, PortalIcon, CompanyIcon, LightbulbIcon, EducationIcon, ProfileIcon, ResourcesIcon } from 'seek-asia-style-guide/react';
+import { getLocalization, locales } from '../localization';
 
 const getJobsDBProps = ({ country, language, loginAvailable }) => {
   const messages = getLocalization({ country, language });
@@ -26,30 +26,23 @@ const getJobsDBProps = ({ country, language, loginAvailable }) => {
     { title: messages['header.employerSiteTitle'], url: messages['header.employerSiteUrl'] }
   ]);
 
-  const locales = [
-    {
-      title: 'Hong Kong (English)',
-      ItemIcon: FlagHKIcon,
-      url: 'https://hk.jobsdb.com/hk'
-    }, {
-      title: 'Singapore (English)',
-      ItemIcon: FlagSGIcon,
-      url: 'https://hk.jobsdb.com/hk'
-    }, {
-      title: 'Indonesia (English)',
-      ItemIcon: FlagIDIcon,
-      url: 'https://hk.jobsdb.com/hk'
-    }, {
-      title: 'Thailand (English)',
-      ItemIcon: FlagTHIcon,
-      url: 'https://hk.jobsdb.com/hk'
-    }
+  const currentLocale = locales.filter(locale => {
+    return locale.country === country && locale.language === language;
+  });
+
+  const otherLocales = locales.filter(locale => {
+    return !(locale.country === country && locale.language === language);
+  });
+
+  const sortedLocales = [
+    ...currentLocale,
+    ...otherLocales
   ];
 
   return {
     links,
-    locales,
-    messages
+    messages,
+    locales: sortedLocales
   }
 };
 

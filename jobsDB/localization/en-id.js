@@ -7,12 +7,12 @@ export default {
   'header.myJobsDBTitle': 'MyJobsDB',
   'header.myJobsDBUrl': `${baseUrlWithLanguage}/MyJobsDB`,
   'header.resourcesTitle': 'Resources',
-  'header.resourcesUrl': 'https://hk.jobsdb.com/en-hk/career-recruitment-advice/',
+  'header.resourcesUrl': 'https://id.jobsdb.com/id-id/career-recruitment-advice/',
   'header.careerInsightsTitle': `${baseUrlWithLanguage}/career-insights`,
   'header.myAccountTitle': 'My Account',
   'header.myAccountUrl': `${baseUrlWithLanguage}/MyJobsDB`,
   'header.employerSiteTitle': 'Employer Site',
-  'header.employerSiteUrl': 'https://hk.jobsdb.com/HK/en/Home/EmployerIndex',
+  'header.employerSiteUrl': 'https://id.jobsdb.com/ID/en/Home/EmployerIndex',
   'menu.more': 'More',
   'menu.backToMenu': 'Back to Menu' 
 };

@@ -7,12 +7,13 @@ export default {
   'header.myJobsDBTitle': 'MyJobsDB',
   'header.myJobsDBUrl': `${baseUrlWithLanguage}/MyJobsDB`,
   'header.resourcesTitle': 'Resources',
-  'header.resourcesUrl': 'https://hk.jobsdb.com/en-hk/career-recruitment-advice/',
-  'header.careerInsightsTitle': `${baseUrlWithLanguage}/career-insights`,
+  'header.resourcesUrl': 'https://th.jobsdb.com/en-th/career-recruitment-advice/',
+  'header.careerInsightsTitle': 'Campnet',
+  'header.careerInsightsUrl': `https://th.jobsdb.com/th-th/pages/jobsdb-campnet`,
   'header.myAccountTitle': 'My Account',
   'header.myAccountUrl': `${baseUrlWithLanguage}/MyJobsDB`,
   'header.employerSiteTitle': 'Employer Site',
-  'header.employerSiteUrl': 'https://hk.jobsdb.com/HK/en/Home/EmployerIndex',
+  'header.employerSiteUrl': 'https://th.jobsdb.com/TH/th/Home/EmployerIndex',
   'menu.more': 'More',
   'menu.backToMenu': 'Back to Menu' 
 };
