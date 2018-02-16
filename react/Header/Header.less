@@ -1,5 +1,7 @@
 @import (reference) "~seek-asia-style-guide/theme";
 
+@actionTrayHeight: @grid-base * 14;
+
 .root {
   width: 100%;
   background-color: @saWhite;
@@ -42,12 +44,20 @@
   bottom: 0;
   z-index: @z-index-header-overlay + 1;
   width: 100%;
-  height: @grid-base * 14;
+  height: @actionTrayHeight;
   background-color: @saWhite;
   border-top: 1px solid @saGrey3;
 
-  @media desktop {
+  @media @desktop {
     display: none;  
+  }
+}
+
+.actionTraySpacer {
+  margin-bottom: @actionTrayHeight;
+
+  @media @desktop {
+    display: none;
   }
 }
 
