@@ -11,9 +11,24 @@
   display: none;
 
   @media @desktop {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: @grid-base * 8;
+    padding: 0 @grid-base * 2;
+    background-color: @saGrey6; 
   }
 }
+
+.currentLocale {
+  display: flex;
+  align-items: center;
+}
+
+.localeIcon {
+  margin: @grid-base @grid-base 0 0;
+} 
 
 .primaryNav {
   display: flex;
@@ -32,6 +47,26 @@
 .primaryNavNoLogin {
   &:extend(.primaryNav);
   justify-content: center;
+
+  @media @desktop {
+    justify-content: flex-start;
+  }
+}
+
+.primaryNavLinksWrapper {
+  display: none;
+
+  @media @desktop {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-left: @grid-base * 8;
+  }
+}
+
+.primaryNavLink {
+  margin-right: @grid-base * 8;
 }
 
 .actionTray {

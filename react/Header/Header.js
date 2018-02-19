@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import styles from './Header.less';
-import { HomeIcon, SearchIcon, BookmarkIcon, HamburgerIcon } from 'seek-asia-style-guide/react';
+import { HomeIcon, SearchIcon, BookmarkIcon, HamburgerIcon, Text } from 'seek-asia-style-guide/react';
 import Login from './components/Login/Login';
 import Menu from './components/Menu/Menu';
 
@@ -18,6 +18,34 @@ const actionTrayLink = ({ linkUrl, LinkIcon, activeTab, tabName, menuOpen }) => 
     </a>
   )
 }
+
+const currentLocale = ({ title, ItemIcon }) => {
+  return (
+    <span className={styles.currentLocale}>
+      <ItemIcon className={styles.localeIcon} />
+      <Text whispering>{title}</Text>
+    </span>
+  )
+}
+
+const renderPrimaryNavLinks = (links) => {
+  const primaryNavLinks = (Array.isArray(links) && links.length && links[0].map) ? 
+    links[0].map(link => {
+      return (
+        <span className={styles.primaryNavLink}>
+          <a href={link.url}>
+            <Text>{link.title}</Text>
+          </a>
+        </span>
+      )
+    }) : [];
+
+    return (
+      <div className={styles.primaryNavLinksWrapper}>
+        { primaryNavLinks }
+      </div>
+    );
+};
 
 export default class Header extends Component {
   constructor() {
@@ -40,10 +68,16 @@ export default class Header extends Component {
     return (
       <header className={styles.root}>
         <div className={styles.externalNav}>
-          Language/Country - Employer Link
+          <div className={styles.locale}>
+            {currentLocale(locales[0])}
+          </div>
+          <div className={styles.employerLink}>
+            <Text whispering>Looking to hire?  Check out our <a href={messages['header.employerSiteUrl']}>{messages['header.employerSiteTitle']}</a></Text>
+          </div>
         </div>
         <div className={loginAvailable ? styles.primaryNav : styles.primaryNavNoLogin}>
           <LogoComponent />
+          { renderPrimaryNavLinks(links) }
           { loginAvailable && (<Login />) }
         </div>
         <div className={styles.actionTray}>

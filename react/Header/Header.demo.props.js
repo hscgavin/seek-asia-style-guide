@@ -98,8 +98,19 @@ export const jobsDBProps = {
     url: 'https://hk.jobsdb.com/hk'
   }],
   messages: {
+    'header.homeTitle': 'Home',
     'header.homeUrl': 'https://hk.jobsdb.com/hk',
+    'header.myJobsDBTitle': 'MyJobsDB',
+    'header.myJobsDBUrl': `https://hk.jobsdb.com/hk/en/MyJobsDB`,
+    'header.resourcesTitle': 'Resources',
+    'header.resourcesUrl': 'https://hk.jobsdb.com/en-hk/career-recruitment-advice/',
+    'header.careerInsightsTitle': 'Career Insights',
+    'header.careerInsightsUrl': `https://hk.jobsdb.com/hk/en/career-insights`,
+    'header.myAccountTitle': 'My Account',
+    'header.myAccountUrl': `https://hk.jobsdb.com/hk/en/MyJobsDB`,
+    'header.employerSiteTitle': 'Employer Site',
+    'header.employerSiteUrl': 'https://hk.jobsdb.com/HK/en/Home/EmployerIndex',
     'menu.more': 'More',
-    'menu.backToMenu': 'Back to Menu'
+    'menu.backToMenu': 'Back to Menu' 
   }
 };
