@@ -1,147 +1,73 @@
-import React, { Component } from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import React from 'react';
+
+import { Header as GlobalHeader } from 'seek-asia-style-guide/react';
 import Logo from '../Logo/Logo';
-import {
-  Text,
-  PageBlock,
-  Section,
-  HamburgerIcon,
-  Button
-} from 'seek-asia-style-guide/react';
-import {
-  AUTHENTICATED,
-  UNAUTHENTICATED,
-  AUTH_PENDING
-} from 'seek-asia-style-guide/react/private/authStatusTypes';
-import Nav from './components/Nav/Nav';
-import styles from './header.less';
-import links from './links';
-import localization from '../localization';
+import { HomeIcon, PortalIcon, CompanyIcon, LightbulbIcon, EducationIcon, ProfileIcon } from 'seek-asia-style-guide/react';
+import { getLocalization, locales } from '../localization';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isNavActive: false
-    };
-    this.handleClick = this.handleClick.bind(this);
-    this.handleHamburgerClick = this.handleHamburgerClick.bind(this);
-    this.handleNodeRef = this.handleNodeRef.bind(this);
+const getJobStreetProps = ({ country, language, loginAvailable }) => {
+  const messages = getLocalization({ country, language });
+
+  const links = [];
+  links.push([   // first group of links
+      { title: messages['header.homeTitle'], url: messages['header.homeUrl'], ItemIcon: HomeIcon },
+      { title: messages['header.myJobStreetTitle'], url: messages['header.myJobStreetUrl'], ItemIcon: PortalIcon },
+      { title: messages['header.companyProfilesTitle'], url: messages['header.companyProfilesUrl'], ItemIcon: CompanyIcon },
+      { title: messages['header.careerInsightsTitle'], url: messages['header.careerInsightsUrl'], ItemIcon: LightbulbIcon },
+      { title: messages['header.educationTitle'], url: messages['header.educationUrl'], ItemIcon: EducationIcon } 
+  ]);
+  
+  links.push(  // second group of links, login awareness goes here 
+    loginAvailable ? 
+      [ { title: messages['header.myAccountTitle'], url: messages['header.myAccountUrl'], ItemIcon: ProfileIcon } ] :
+      []
+  );
+
+  links.push([
+    { title: messages['header.employerSiteTitle'], url: messages['header.employerSiteUrl'] }
+  ]);
+
+  const more = [
+    { title: messages['header.overseasJobsTitle'], url: messages['header.overseasJobsUrl'] },
+    { title: messages['header.freshGradJobsTitle'], url: messages['header.freshGradJobsUrl'] },
+    { title: messages['header.classifiedJobsTitle'], url: messages['header.classifiedJobsUrl'] }
+  ];
+
+  const currentLocale = locales.filter(locale => {
+    return locale.country === country && locale.language === language;
+  });
+
+  const otherLocales = locales.filter(locale => {
+    return !(locale.country === country && locale.language === language);
+  });
+
+  const sortedLocales = [
+    ...currentLocale,
+    ...otherLocales
+  ];
+
+  return {
+    links,
+    messages,
+    locales: sortedLocales
   }
+};
 
-  componentWillUnmount() {
-    document.removeEventListener('click', this.handleClick, false);
-  }
 
-  handleClick(e) {
-    const userClickedOutsideOfDropdown = !this.dropdownNode.contains(e.target);
-    if (userClickedOutsideOfDropdown) {
-      this.showNav(false);
-    }
-  }
 
-  handleHamburgerClick() {
-    if (!this.state.isNavActive) {
-      this.showNav(true);
-    }
-  }
+const Header = ({ country, language, activeTab, loginAvailable=true }) => {
+  const CountryLogo = () => (
+    <Logo country={country} />
+  );
 
-  handleNodeRef(node) {
-    this.dropdownNode = node;
-  }
-
-  showNav(shouldShowNav) {
-    const eventAction = shouldShowNav ?
-      'addEventListener' :
-      'removeEventListener';
-    document[eventAction]('click', this.handleClick, false);
-    this.setState({
-      isNavActive: shouldShowNav
-    });
-  }
-
-  render() {
-    const {
-      username,
-      userToken,
-      language,
-      country,
-      authenticationStatus,
-      activeNavLinkTextKey
-    } = this.props;
-    const { isNavActive } = this.state;
-    let userLinks = [];
-    if (authenticationStatus === AUTHENTICATED) {
-      userLinks = links.getUserLinks(username, userToken);
-    } else if (authenticationStatus === UNAUTHENTICATED) {
-      userLinks = links.getLoggedOutUserLinks();
-    }
-    const navLinks = links.getNavLinks(username, userToken);
-    const messages = localization[`${language}-${country.toLowerCase()}`];
-
-    return (
-      <header
-        className={styles.root}
-        role="banner"
-        aria-label="Primary navigation">
-        {/*
-          * PageBlock / Section being a functional component doesn't work with `ref`.
-          * https://reactjs.org/docs/refs-and-the-dom.html
-         */}
-        <PageBlock
-          className={classNames({
-            [styles.navWrapper]: true,
-            [styles.navWrapperHideOnMobile]: !isNavActive
-          })}>
-          <div className={styles.navContainer} ref={this.handleNodeRef}>
-            <Nav
-              key={'navLinks'}
-              links={navLinks}
-              messages={messages}
-              activeNavLinkTextKey={activeNavLinkTextKey}
-            />
-            {authenticationStatus === AUTH_PENDING || (
-              <Nav key={'userLinks'} links={userLinks} messages={messages} />
-            )}
-          </div>
-        </PageBlock>
-        <PageBlock className={styles.bannerWrapper}>
-          <Section className={styles.bannerContainer}>
-            <Button
-              className={styles.toggle}
-              onClick={this.handleHamburgerClick}>
-              <HamburgerIcon />
-            </Button>
-            <div className={styles.logoContainer}>
-              <a href="/" title={messages['header.homeTitle']}>
-                <Logo className={styles.logo} country={country} />
-              </a>
-            </div>
-            <a
-              className={styles.employerLink}
-              href={messages['header.employerLink']}
-              title={messages['header.employerTitle']}>
-              <Text strong>{messages['header.employerText']}</Text>
-            </a>
-          </Section>
-        </PageBlock>
-      </header>
-    );
-  }
-}
-
-Header.propTypes = {
-  username: PropTypes.string,
-  userToken: PropTypes.string,
-  authenticationStatus: PropTypes.oneOf([
-    AUTHENTICATED,
-    UNAUTHENTICATED,
-    AUTH_PENDING
-  ]).isRequired,
-  language: PropTypes.string.isRequired,
-  country: PropTypes.string.isRequired,
-  activeNavLinkTextKey: PropTypes.string
+  return (
+    <GlobalHeader 
+      LogoComponent={CountryLogo}
+      activeTab={activeTab}
+      loginAvailable={loginAvailable}
+      {...getJobStreetProps({ country, language, loginAvailable })}
+    />
+  );
 };
 
 export default Header;

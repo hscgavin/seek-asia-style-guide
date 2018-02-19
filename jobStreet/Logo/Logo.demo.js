@@ -5,6 +5,8 @@ export default {
   tenantPath: 'jobStreet',
   title: 'JobStreet Logo',
   component: Logo,
-  initialProps: {},
+  initialProps: {
+    country: 'my'
+  },
   options: []
 };

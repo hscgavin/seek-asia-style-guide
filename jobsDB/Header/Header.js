@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Header as GlobalHeader } from 'seek-asia-style-guide/react';
 import Logo from '../Logo/Logo';
-import { HomeIcon, PortalIcon, CompanyIcon, LightbulbIcon, EducationIcon, ProfileIcon, ResourcesIcon } from 'seek-asia-style-guide/react';
+import { HomeIcon, PortalIcon, LightbulbIcon, ProfileIcon, ResourcesIcon } from 'seek-asia-style-guide/react';
 import { getLocalization, locales } from '../localization';
 
 const getJobsDBProps = ({ country, language, loginAvailable }) => {

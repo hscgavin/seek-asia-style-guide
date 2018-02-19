@@ -13,7 +13,7 @@ export default {
   'header.myAccountTitle': 'My Account',
   'header.myAccountUrl': `${baseUrlWithLanguage}/MyJobsDB`,
   'header.employerSiteTitle': 'Employer Site',
-  'header.employerSiteUrl': 'https://th.jobsdb.com/TH/th/Home/EmployerIndex',
+  'header.employerSiteUrl': 'https://th.jobsdb.com/TH/en/Home/EmployerIndex',
   'menu.more': 'More',
   'menu.backToMenu': 'Back to Menu' 
 };
