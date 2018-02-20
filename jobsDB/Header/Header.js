@@ -53,7 +53,7 @@ const Header = ({ country, language, activeTab, loginAvailable=true }) => {
       activeTab={activeTab}
       loginAvailable={loginAvailable}
       {...getJobsDBProps({ country, language, loginAvailable })}
-      primaryNavLinkClass={styles.primaryNavLink}
+      brandStyles={styles}
     />
   );
 };

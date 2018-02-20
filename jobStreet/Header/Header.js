@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styles from './Header.less';
 import { Header as GlobalHeader } from 'seek-asia-style-guide/react';
 import Logo from '../Logo/Logo';
 import { HomeIcon, PortalIcon, CompanyIcon, LightbulbIcon, EducationIcon, ProfileIcon } from 'seek-asia-style-guide/react';
@@ -66,6 +66,7 @@ const Header = ({ country, language, activeTab, loginAvailable=true }) => {
       activeTab={activeTab}
       loginAvailable={loginAvailable}
       {...getJobStreetProps({ country, language, loginAvailable })}
+      brandStyles={styles}
     />
   );
 };

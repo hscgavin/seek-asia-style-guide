@@ -3,26 +3,28 @@ import classnames from 'classnames';
 import { Button } from 'seek-asia-style-guide/react';
 import styles from './MenuItem.less';
 
-const withIcon = ({ ItemIcon, children, iconProps={} }) => {
+const withIcon = ({ ItemIcon, children, brandStyles, iconProps={} }) => {
+  iconProps.svgClassName = iconProps.svgClassName ? classnames(iconProps.svgClassName, brandStyles.menuIcon) : brandStyles.menuIcon;
+
   return [
     ...(ItemIcon ? [(<ItemIcon className={styles.icon} {...iconProps} />)] : []), 
     children
   ];
 };
 
-const interactionButton = ({ ItemIcon, children, iconProps, ...restProps }) => {
+const interactionButton = ({ ItemIcon, children, iconProps, brandStyles, ...restProps }) => {
   return (
     <Button {...restProps}>
-      { withIcon({ ItemIcon, children, iconProps }) }
+      { withIcon({ ItemIcon, children, iconProps, brandStyles }) }
     </Button>
   );
 }
 
-const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon, iconProps }) => {
+const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon, iconProps, brandStyles }) => {
 
   const interactionProps = {
     color: "transparent",
-    className: styles.interaction,
+    className: styles.item,
     children,
     ItemIcon,
     iconProps
@@ -32,18 +34,20 @@ const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon, iconProps
     return interactionButton({
       ...interactionProps,
       component: 'a',
-      href: linkUrl
+      href: linkUrl,
+      brandStyles
     });
   } else if (handleClick) {
     return interactionButton({
       ...interactionProps,
-      onClick: handleClick
+      onClick: handleClick,
+      brandStyles
     });
   }
 
   return (
     <span className={styles.item}>
-      { withIcon({ ItemIcon, children, iconProps }) }
+      { withIcon({ ItemIcon, children, iconProps, brandStyles }) }
     </span>
   );
 };

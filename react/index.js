@@ -35,6 +35,7 @@ export { default as Section } from './Section/Section';
 
 // Icons
 export { default as BookmarkIcon } from './BookmarkIcon/BookmarkIcon';
+export { default as CheckMarkIcon } from './CheckMarkIcon/CheckMarkIcon';
 export { default as ChevronIcon } from './ChevronIcon/ChevronIcon';
 export { default as ClearIcon } from './ClearIcon/ClearIcon';
 export { default as CloseIcon } from './CloseIcon/CloseIcon';
