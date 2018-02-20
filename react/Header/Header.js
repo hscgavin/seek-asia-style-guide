@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import classnames from 'classnames';
 import styles from './Header.less';
 import { HomeIcon, SearchIcon, BookmarkIcon, HamburgerIcon, Text } from 'seek-asia-style-guide/react';
 import Login from './components/Login/Login';
@@ -28,11 +28,11 @@ const currentLocale = ({ title, ItemIcon }) => {
   )
 }
 
-const renderPrimaryNavLinks = (links) => {
+const renderPrimaryNavLinks = ({ links, primaryNavLinkClass }) => {
   const primaryNavLinks = (Array.isArray(links) && links.length && links[0].map) ? 
     links[0].map(link => {
       return (
-        <span className={styles.primaryNavLink}>
+        <span className={classnames(styles.primaryNavLink, primaryNavLinkClass)}>
           <a href={link.url}>
             <Text>{link.title}</Text>
           </a>
@@ -61,7 +61,7 @@ export default class Header extends Component {
   };
   
   render () {
-    const { loginAvailable = true, LogoComponent, activeTab, links, more, locales, messages } = this.props;
+    const { loginAvailable = true, LogoComponent, activeTab, links, more, locales, messages, primaryNavLinkClass } = this.props;
     
     const menuOpen = this.state.menuOpen;
 
@@ -77,7 +77,7 @@ export default class Header extends Component {
         </div>
         <div className={loginAvailable ? styles.primaryNav : styles.primaryNavNoLogin}>
           <LogoComponent />
-          { renderPrimaryNavLinks(links) }
+          { renderPrimaryNavLinks({ links, primaryNavLinkClass }) }
           { loginAvailable && (<Login />) }
         </div>
         <div className={styles.actionTray}>
@@ -85,11 +85,11 @@ export default class Header extends Component {
             { actionTrayLink({ LinkIcon: HomeIcon, linkUrl: messages['header.homeUrl'], activeTab, tabName: ACTIVE_TAB_HOME, menuOpen }) }
           </div>
           <div>
-            { actionTrayLink({ LinkIcon: SearchIcon, linkUrl: messages['header.homeUrl'], activeTab, tabName: ACTIVE_TAB_SEARCH, menuOpen }) }
+            { actionTrayLink({ LinkIcon: SearchIcon, linkUrl: messages['header.searchUrl'], activeTab, tabName: ACTIVE_TAB_SEARCH, menuOpen }) }
           </div>
           { loginAvailable && (
             <div>
-              { actionTrayLink({ LinkIcon: BookmarkIcon, linkUrl: messages['header.homeUrl'], activeTab, tabName: ACTIVE_TAB_SAVED_JOBS, menuOpen }) }
+              { actionTrayLink({ LinkIcon: BookmarkIcon, linkUrl: messages['header.savedJobsUrl'], activeTab, tabName: ACTIVE_TAB_SAVED_JOBS, menuOpen }) }
             </div>
           )}
           <div onClick={this.toggleMenu} className={styles.menuToggle}>

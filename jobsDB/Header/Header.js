@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styles from './Header.less';
 import { Header as GlobalHeader } from 'seek-asia-style-guide/react';
 import Logo from '../Logo/Logo';
 import { HomeIcon, PortalIcon, LightbulbIcon, ProfileIcon, ResourcesIcon } from 'seek-asia-style-guide/react';
@@ -53,6 +53,7 @@ const Header = ({ country, language, activeTab, loginAvailable=true }) => {
       activeTab={activeTab}
       loginAvailable={loginAvailable}
       {...getJobsDBProps({ country, language, loginAvailable })}
+      primaryNavLinkClass={styles.primaryNavLink}
     />
   );
 };
