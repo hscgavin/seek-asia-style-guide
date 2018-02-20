@@ -24,24 +24,23 @@ const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon, iconProps
 
   const interactionProps = {
     color: "transparent",
+    component: 'a',
     className: styles.item,
     children,
     ItemIcon,
-    iconProps
+    iconProps,
+    brandStyles
   };
 
   if (linkUrl) {
     return interactionButton({
       ...interactionProps,
-      component: 'a',
-      href: linkUrl,
-      brandStyles
+      href: linkUrl
     });
   } else if (handleClick) {
     return interactionButton({
       ...interactionProps,
-      onClick: handleClick,
-      brandStyles
+      onClick: handleClick
     });
   }
 
