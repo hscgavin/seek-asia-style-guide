@@ -55,7 +55,7 @@ const getJobStreetProps = ({ country, language, loginAvailable }) => {
 
 
 
-const Header = ({ country, language, activeTab, loginAvailable=true }) => {
+const Header = ({ country='my', language='en', activeTab, loginAvailable=true }) => {
   const CountryLogo = () => (
     <Logo country={country} />
   );
