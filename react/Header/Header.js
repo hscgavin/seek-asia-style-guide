@@ -111,7 +111,7 @@ export default class Header extends Component {
               { actionTrayLink({ LinkIcon: BookmarkIcon, linkUrl: messages['header.savedJobsUrl'], activeTab, tabName: ACTIVE_TAB_SAVED_JOBS, menuOpen, brandStyles }) }
             </div>
           )}
-          <div onClick={this.handleToggleMenu} className={styles.menuToggle}>
+          <div onClick={this.handleToggleMenu.bind(this)} className={styles.menuToggle}>
             <HamburgerIcon svgClassName={classnames(styles.svg, { [brandStyles.activeActionTrayIcon]: menuOpen })} />
           </div>
         </div>
