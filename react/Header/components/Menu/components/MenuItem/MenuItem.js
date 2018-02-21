@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Button } from 'seek-asia-style-guide/react';
 import styles from './MenuItem.less';
 
-const withIcon = ({ ItemIcon, children, brandStyles, iconProps={} }) => {
+const withIcon = ({ ItemIcon, children, brandStyles, iconProps = {} }) => {
   iconProps.svgClassName = iconProps.svgClassName ? classnames(iconProps.svgClassName, brandStyles.menuIcon) : brandStyles.menuIcon;
 
   return [
-    ...(ItemIcon ? [(<ItemIcon className={styles.icon} {...iconProps} />)] : []), 
+    ...(ItemIcon ? [(<ItemIcon key="icon" className={styles.icon} {...iconProps} />)] : []),
     children
   ];
 };
@@ -18,12 +19,18 @@ const interactionButton = ({ ItemIcon, children, iconProps, brandStyles, ...rest
       { withIcon({ ItemIcon, children, iconProps, brandStyles }) }
     </Button>
   );
-}
+};
+
+interactionButton.propTypes = {
+  ItemIcon: PropTypes.component,
+  children: PropTypes.any,
+  iconProps: PropTypes.object,
+  brandStyles: PropTypes.object
+};
 
 const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon, iconProps, brandStyles }) => {
-
   const interactionProps = {
-    color: "transparent",
+    color: 'transparent',
     component: 'a',
     className: styles.item,
     children,
@@ -51,12 +58,25 @@ const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon, iconProps
   );
 };
 
+renderInteraction.propTypes = {
+  linkUrl: PropTypes.string,
+  handleClick: PropTypes.func,
+  children: PropTypes.any,
+  ItemIcon: PropTypes.component,
+  iconProps: PropTypes.object,
+  brandStyles: PropTypes.object
+};
+
 const MenuItem = ({ className, ...restProps }) => {
   return (
     <div className={classnames(styles.root, className)}>
       {renderInteraction({ ...restProps })}
     </div>
-  )
+  );
+};
+
+MenuItem.propTypes = {
+  className: PropTypes.string
 };
 
 export default MenuItem;

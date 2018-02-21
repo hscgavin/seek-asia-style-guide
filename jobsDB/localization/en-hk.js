@@ -15,5 +15,5 @@ export default {
   'header.employerSiteTitle': 'Employer Site',
   'header.employerSiteUrl': 'https://hk.jobsdb.com/HK/en/Home/EmployerIndex',
   'menu.more': 'More',
-  'menu.backToMenu': 'Back to Menu' 
+  'menu.backToMenu': 'Back to Menu'
 };

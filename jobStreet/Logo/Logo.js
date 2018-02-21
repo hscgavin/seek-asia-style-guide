@@ -6,15 +6,15 @@ import markupMY from './JobStreetLogoMY.svg';
 import markupPH from './JobStreetLogoPH.svg';
 import markupSG from './JobStreetLogoSG.svg';
 
-const getMarkup = (country) => {
-  switch(country.toLowerCase()) {
+const getMarkup = country => {
+  switch (country.toLowerCase()) {
     case 'sg':
       return markupSG;
     case 'id':
       return markupID;
     case 'ph':
       return markupPH;
-    default: 
+    default:
       return markupMY;
   }
 };
@@ -30,7 +30,8 @@ export default function Logo({ country, svgClassName, ...restProps }) {
 
 Logo.propTypes = {
   svgClassName: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  country: PropTypes.string
 };
 
 Logo.defaultProps = {

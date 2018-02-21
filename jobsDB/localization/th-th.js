@@ -15,5 +15,5 @@ export default {
   'header.employerSiteTitle': 'Employer Site',
   'header.employerSiteUrl': 'https://th.jobsdb.com/TH/th/Home/EmployerIndex',
   'menu.more': 'More',
-  'menu.backToMenu': 'Back to Menu' 
+  'menu.backToMenu': 'Back to Menu'
 };

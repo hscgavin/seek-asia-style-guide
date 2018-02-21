@@ -14,5 +14,5 @@ export default {
   'header.employerSiteTitle': 'Employer Site',
   'header.employerSiteUrl': 'https://sg.jobsdb.com/SG/en/Home/EmployerIndex',
   'menu.more': 'More',
-  'menu.backToMenu': 'Back to Menu' 
+  'menu.backToMenu': 'Back to Menu'
 };

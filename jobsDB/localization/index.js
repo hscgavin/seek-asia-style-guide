@@ -28,7 +28,7 @@ export const locales = [
     url: 'https://hk.jobsdb.com/hk',
     language: 'en',
     country: 'hk'
-  },  {
+  }, {
     title: 'Indonesia (English)',
     ItemIcon: FlagIDIcon,
     url: 'https://id.jobsdb.com/id',

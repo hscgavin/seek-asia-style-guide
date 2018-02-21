@@ -21,7 +21,7 @@ export default {
   'footer.helpLinkText': 'Help',
   'footer.feedbackLink':
     'https://myjobstreet.jobstreet.com.sg/home/feedback.php?site=sg&sub=feedback',
-  'footer.feedbackLinkText': 'Send Feedback', 
+  'footer.feedbackLinkText': 'Send Feedback',
   'header.homeLink': `${baseUrl}`,
   'header.homeTitle': 'Leading Job Site in Malaysia - Find Jobs in Malaysia',
   'header.homeText': 'Home',
