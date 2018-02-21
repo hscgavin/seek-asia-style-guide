@@ -81,7 +81,7 @@ export default class Header extends Component {
   }
 
   render() {
-    const { loginAvailable = true, LogoComponent, activeTab, links, more, locales, messages, brandStyles } = this.props;
+    const { loginAvailable = true, LogoComponent, logoProps, activeTab, links, more, locales, messages, brandStyles } = this.props;
     const menuOpen = this.state.menuOpen;
 
     return (
@@ -95,7 +95,7 @@ export default class Header extends Component {
           </div>
         </div>
         <div className={loginAvailable ? styles.primaryNav : styles.primaryNavNoLogin}>
-          <LogoComponent />
+          <LogoComponent {...logoProps} />
           { renderPrimaryNavLinks({ links, brandStyles }) }
           { loginAvailable && (<Login />) }
         </div>
@@ -124,6 +124,7 @@ export default class Header extends Component {
 Header.propTypes = {
   loginAvailable: PropTypes.bool,
   LogoComponent: PropTypes.component,
+  logoProps: PropTypes.object,
   activeTab: PropTypes.string,
   links: PropTypes.array,
   more: PropTypes.array,
