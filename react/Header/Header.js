@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import styles from './Header.less';
 import { HomeIcon, SearchIcon, BookmarkIcon, HamburgerIcon, Text } from 'seek-asia-style-guide/react';
 import Login from './components/Login/Login';
 import Menu from './components/Menu/Menu';
+import styles from './Header.less';
 
 export const ACTIVE_TAB_HOME = 'HOME';
 export const ACTIVE_TAB_SEARCH = 'SEARCH';
