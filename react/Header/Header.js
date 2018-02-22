@@ -22,7 +22,7 @@ const actionTrayLink = ({ linkUrl, LinkIcon, activeTab, tabName, menuOpen, brand
 
 actionTrayLink.propTypes = {
   linkUrl: PropTypes.string,
-  LinkIcon: PropTypes.component,
+  LinkIcon: PropTypes.func,
   activeTab: PropTypes.string,
   tabName: PropTypes.string,
   menuOpen: PropTypes.bool,
@@ -40,7 +40,7 @@ const currentLocale = ({ title, ItemIcon }) => {
 
 currentLocale.propTypes = {
   title: PropTypes.string,
-  ItemIcon: PropTypes.component
+  ItemIcon: PropTypes.func
 };
 
 const renderPrimaryNavLinks = ({ links, brandStyles }) => {
@@ -91,7 +91,7 @@ export default class Header extends Component {
             {currentLocale(locales[0])}
           </div>
           <div className={styles.employerLink}>
-            <Text whispering>Looking to hire?  Check out our <a href={messages['header.employerSiteUrl']}>{messages['header.employerSiteTitle']}</a></Text>
+            <Text whispering>Looking to hire?  Check out our <a className={classnames(styles.employerLink, brandStyles.employerLink)} href={messages['header.employerSiteUrl']}>{messages['header.employerSiteTitle']}</a></Text>
           </div>
         </div>
         <div className={loginAvailable ? styles.primaryNav : styles.primaryNavNoLogin}>
@@ -123,7 +123,7 @@ export default class Header extends Component {
 
 Header.propTypes = {
   loginAvailable: PropTypes.bool,
-  LogoComponent: PropTypes.component,
+  LogoComponent: PropTypes.func,
   logoProps: PropTypes.object,
   activeTab: PropTypes.string,
   links: PropTypes.array,

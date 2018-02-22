@@ -4,31 +4,32 @@ import classnames from 'classnames';
 import { Button } from 'seek-asia-style-guide/react';
 import styles from './MenuItem.less';
 
-const withIcon = ({ ItemIcon, children, brandStyles, iconProps = {} }) => {
+const withIcon = ({ ItemIcon, children, brandStyles, itemClass, iconProps = {} }) => {
   iconProps.svgClassName = iconProps.svgClassName ? classnames(iconProps.svgClassName, brandStyles.menuIcon) : brandStyles.menuIcon;
 
   return [
     ...(ItemIcon ? [(<ItemIcon key="icon" className={styles.icon} {...iconProps} />)] : []),
-    children
+    <span className={itemClass}>{children}</span>
   ];
 };
 
-const interactionButton = ({ ItemIcon, children, iconProps, brandStyles, ...restProps }) => {
+const interactionButton = ({ ItemIcon, children, iconProps, brandStyles, itemClass, ...restProps }) => {
   return (
     <Button {...restProps}>
-      { withIcon({ ItemIcon, children, iconProps, brandStyles }) }
+      { withIcon({ ItemIcon, children, iconProps, brandStyles, itemClass }) }
     </Button>
   );
 };
 
 interactionButton.propTypes = {
-  ItemIcon: PropTypes.component,
+  ItemIcon: PropTypes.func,
   children: PropTypes.any,
   iconProps: PropTypes.object,
-  brandStyles: PropTypes.object
+  brandStyles: PropTypes.object,
+  itemClass: PropTypes.string
 };
 
-const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon, iconProps, brandStyles }) => {
+const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon, itemClass, iconProps, brandStyles }) => {
   const interactionProps = {
     color: 'transparent',
     component: 'a',
@@ -36,7 +37,8 @@ const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon, iconProps
     children,
     ItemIcon,
     iconProps,
-    brandStyles
+    brandStyles,
+    itemClass
   };
 
   if (linkUrl) {
@@ -53,7 +55,7 @@ const renderInteraction = ({ linkUrl, handleClick, children, ItemIcon, iconProps
 
   return (
     <span className={styles.item}>
-      { withIcon({ ItemIcon, children, iconProps, brandStyles }) }
+      { withIcon({ ItemIcon, children, iconProps, brandStyles, itemClass }) }
     </span>
   );
 };
@@ -62,7 +64,8 @@ renderInteraction.propTypes = {
   linkUrl: PropTypes.string,
   handleClick: PropTypes.func,
   children: PropTypes.any,
-  ItemIcon: PropTypes.component,
+  ItemIcon: PropTypes.func,
+  itemClass: PropTypes.string,
   iconProps: PropTypes.object,
   brandStyles: PropTypes.object
 };

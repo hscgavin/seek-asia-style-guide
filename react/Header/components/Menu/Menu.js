@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './Menu.less';
 import MenuItem from './components/MenuItem/MenuItem';
-import { Text, Section, MoreIcon, ChevronIcon, CheckMarkIcon } from 'seek-asia-style-guide/react';
+import { Text, Section, MoreIcon, ChevronIcon, CheckMarkIcon, GlobeIcon, EmployerIcon } from 'seek-asia-style-guide/react';
 
 export default class Menu extends Component {
   constructor() {
@@ -38,13 +38,6 @@ export default class Menu extends Component {
             </MenuItem>
           ));
         }
-        if (locales && locales.length && index === 1) {
-          menuItems.push((
-            <MenuItem key={menuItems.length} handleClick={this.toggleLocalesMenu} ItemIcon={locales[0].ItemIcon} brandStyles={brandStyles}>
-              <Text>{locales[0].title}</Text>
-            </MenuItem>
-          ));
-        }
         return (
           <div key={index} className={styles.menuBody}>
             {menuItems}
@@ -64,10 +57,30 @@ export default class Menu extends Component {
           <Text whisperingTitle>JOB SEEKER</Text>
         </Section>
         {
-          this.renderMenuLinks({ links, locales, more, messages, brandStyles })
+          this.renderMenuLinks({ links, more, messages, brandStyles })
         }
+        <div className={styles.menuBody}>
+          <MenuItem itemClass={brandStyles.employerLink} linkUrl={messages['header.employerSiteUrl']} ItemIcon={EmployerIcon} brandStyles={brandStyles}>
+            <Text>{messages['header.employerSiteTitle']}</Text>
+          </MenuItem>
+        </div>
+
+        <Section className={styles.headerMenu}>
+          <Text whisperingTitle>SETTINGS</Text>
+        </Section>
+        <div className={styles.menuBody}>
+          { locales && locales.length && (
+            <MenuItem className={styles.countryAndLanguage} handleClick={this.toggleLocalesMenu.bind(this)} ItemIcon={GlobeIcon} brandStyles={brandStyles}>
+              <div>
+                <Text>Country &amp; Language</Text>
+                <Text intimate className={styles.currentLocale}>{locales[0].title}</Text>
+              </div>
+          </MenuItem>
+          )}
+        </div>
+
         <div className={this.state.moreMenuOpen ? styles.showSubMenu : styles.subMenu}>
-          <MenuItem handleClick={this.toggleMoreMenu} ItemIcon={ChevronIcon} iconProps={{ direction: 'left' }} brandStyles={brandStyles}>
+          <MenuItem handleClick={this.toggleMoreMenu.bind(this)} ItemIcon={ChevronIcon} iconProps={{ direction: 'left' }} brandStyles={brandStyles}>
             <Text>{messages['menu.backToMenu']}</Text>
           </MenuItem>
           <Section className={styles.headerMenu}>
@@ -79,18 +92,28 @@ export default class Menu extends Component {
             </MenuItem>
           ))}
         </div>
+
         <div className={this.state.localesMenuOpen ? styles.showSubMenu : styles.subMenu}>
-          <MenuItem handleClick={this.toggleLocalesMenu} ItemIcon={ChevronIcon} iconProps={{ direction: 'left' }} brandStyles={brandStyles}>
+          <MenuItem handleClick={this.toggleLocalesMenu.bind(this)} itemClass={styles.backLink} ItemIcon={ChevronIcon} iconProps={{ direction: 'left', svgClassName: styles.backChevron }} brandStyles={brandStyles}>
             <Text>{messages['menu.backToMenu']}</Text>
           </MenuItem>
-          {locales && locales.map && locales.map((link, index) => (
-            <MenuItem key={index} linkUrl={index > 0 ? link.url : null} ItemIcon={link.ItemIcon} brandStyles={brandStyles}>
-              <Text>{link.title}</Text>
-              {index === 0 && (
-                <CheckMarkIcon className={styles.selectedLocaleCheck} svgClassName={styles.selectedLocaleCheckIcon} />
-              )}
-            </MenuItem>
-          ))}
+          <MenuItem ItemIcon={locales[0].ItemIcon} itemClass={styles.selectedLocaleItem} brandStyles={brandStyles}>
+            <span className={styles.selectedLocale}>
+              <Text>{locales[0].title}</Text>
+              <CheckMarkIcon className={styles.selectedLocaleCheck} svgClassName={styles.selectedLocaleCheckIcon} />
+            </span>
+          </MenuItem>
+          {locales && locales.map && locales.map((link, index) => {
+            if (index > 0) {
+              return (
+                <MenuItem key={index} linkUrl={link.url} ItemIcon={link.ItemIcon} brandStyles={brandStyles}>
+                  <Text>{link.title}</Text>  
+                </MenuItem>
+              );
+            }
+
+            return null;
+          })}
         </div>
       </div>
     );

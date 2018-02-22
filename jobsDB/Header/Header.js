@@ -17,14 +17,11 @@ const getJobsDBProps = ({ country, language, loginAvailable }) => {
     { title: messages['header.careerInsightsTitle'], url: messages['header.careerInsightsUrl'], ItemIcon: LightbulbIcon }
   ]);
 
-  links.push( // second group of links, login awareness goes here
-    loginAvailable ?
-      [ { title: messages['header.myAccountTitle'], url: messages['header.myAccountUrl'], ItemIcon: ProfileIcon } ] :
-      []
-  );
-  links.push([
-    { title: messages['header.employerSiteTitle'], url: messages['header.employerSiteUrl'] }
-  ]);
+  // links.push( // second group of links, login awareness goes here
+  //   loginAvailable ?
+  //     [ { title: messages['header.myAccountTitle'], url: messages['header.myAccountUrl'], ItemIcon: ProfileIcon } ] :
+  //     []
+  // );
 
   const currentLocale = locales.filter(locale => {
     return locale.country === country && locale.language === language;

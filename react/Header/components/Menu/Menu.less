@@ -29,6 +29,15 @@
   background-color: @saWhite;
 }
 
+.countryAndLanguage {
+  height: @grid-base * 18;
+}
+
+.currentLocale {
+  color: @saGrey3;
+  text-align: left;
+}
+
 .subMenu {
   &:extend(.root);
   z-index: @z-index-header-overlay + 1;
@@ -39,11 +48,31 @@
   display: block;
 }
 
+.backLink {
+  color: @hyperlink;
+}
+
+.backChevron {
+  fill: @hyperlink;
+}
+
+.selectedLocaleItem {
+  flex-grow: 1;
+  height: @grid-base * 12;
+}
+
+.selectedLocale {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  height: 100%;
+}
+
 .selectedLocaleCheck {
   flex-grow: 1;
   text-align: right;
 }
 
 .selectedLocaleCheckIcon {
-  fill: @saGrey4;
+  fill: @hyperlink;
 }
