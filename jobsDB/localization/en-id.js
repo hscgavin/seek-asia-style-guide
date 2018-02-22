@@ -12,6 +12,7 @@ export default {
   'header.myAccountTitle': 'My Account',
   'header.myAccountUrl': `${baseUrlWithLanguage}/MyJobsDB`,
   'header.employerSiteTitle': 'Employer Site',
+  'header.employerLinkPrefix': 'Looking to hire? Check out our ',
   'header.employerSiteUrl': 'https://id.jobsdb.com/ID/en/Home/EmployerIndex',
   'menu.more': 'More',
   'menu.backToMenu': 'Back to Menu'

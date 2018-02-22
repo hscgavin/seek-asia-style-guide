@@ -87,7 +87,7 @@ export default class Menu extends Component {
             <Text whisperingTitle>MORE</Text>
           </Section>
           {more && more.map && more.map((link, index) => (
-            <MenuItem key={index} linkUrl={link.url} ItemIcon={link.ItemIcon} brandStyles={brandStyles}>
+            <MenuItem key={index} linkUrl={link.url} itemClass={styles.moreItem} ItemIcon={link.ItemIcon} brandStyles={brandStyles}>
               <Text>{link.title}</Text>
             </MenuItem>
           ))}
