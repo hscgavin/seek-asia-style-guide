@@ -1,7 +1,5 @@
 @import (reference) "~seek-asia-style-guide/theme";
 
-@actionTrayHeight: @grid-base * 14;
-
 .root {
   width: 100%;
   background-color: @saWhite;
@@ -75,33 +73,4 @@
 
 .primaryNavLink a {
   text-decoration: none;
-}
-
-.actionTray {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-around;
-  position: fixed;
-  bottom: 0;
-  z-index: @z-index-header-overlay + 1;
-  width: 100%;
-  height: @actionTrayHeight;
-  background-color: @saWhite;
-  border-top: 1px solid @saGrey3;
-
-  @media @desktop {
-    display: none;  
-  }
-}
-
-.menuToggle {
-  cursor: pointer;
-}
-
-.svg {
-  fill: @saGrey4;
-  width: @grid-base * 6;
-  height: @grid-base * 6;
 }

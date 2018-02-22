@@ -9,7 +9,7 @@ const withIcon = ({ ItemIcon, children, brandStyles, itemClass, iconProps = {} }
 
   return [
     ...(ItemIcon ? [(<ItemIcon key="icon" className={styles.icon} {...iconProps} />)] : []),
-    <span className={itemClass}>{children}</span>
+    <span key="children" className={itemClass}>{children}</span>
   ];
 };
 
