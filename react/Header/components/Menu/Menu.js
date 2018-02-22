@@ -25,25 +25,25 @@ export default class Menu extends Component {
 
   renderMenuLinks = ({ links, locales, more, messages, brandStyles }) => {
     if (links && links.map) {
-      return links.map((linksList, index) => {
-        const menuItems = linksList.map ? linksList.map((link, linkIndex) => (
-          <MenuItem key={linkIndex} linkUrl={link.url} ItemIcon={link.ItemIcon} brandStyles={brandStyles}>
-            <Text>{link.title}</Text>
+      const menuItems = links.map((link, index) => (
+        <MenuItem key={index} linkUrl={link.url} ItemIcon={link.ItemIcon} brandStyles={brandStyles}>
+          <Text>{link.title}</Text>
+        </MenuItem>
+      ));
+
+      if (more) {
+        menuItems.push((
+          <MenuItem key={menuItems.length} handleClick={this.toggleMoreMenu.bind(this)} ItemIcon={MoreIcon} brandStyles={brandStyles}>
+            <Text>{messages['menu.more']}</Text>
           </MenuItem>
-        )) : [];
-        if (more && index === 0) {
-          menuItems.push((
-            <MenuItem key={menuItems.length} handleClick={this.toggleMoreMenu} ItemIcon={MoreIcon} brandStyles={brandStyles}>
-              <Text>{messages['menu.more']}</Text>
-            </MenuItem>
-          ));
-        }
-        return (
-          <div key={index} className={styles.menuBody}>
-            {menuItems}
-          </div>
-        );
-      });
+        ));
+      }
+
+      return (
+        <div className={styles.menuBody}>
+          {menuItems}
+        </div>
+      );
     }
 
     return null;
@@ -80,7 +80,7 @@ export default class Menu extends Component {
         </div>
 
         <div className={this.state.moreMenuOpen ? styles.showSubMenu : styles.subMenu}>
-          <MenuItem handleClick={this.toggleMoreMenu.bind(this)} ItemIcon={ChevronIcon} iconProps={{ direction: 'left' }} brandStyles={brandStyles}>
+          <MenuItem handleClick={this.toggleMoreMenu.bind(this)}  itemClass={styles.backLink} ItemIcon={ChevronIcon} iconProps={{ direction: 'left', svgClassName: styles.backChevron }} brandStyles={brandStyles}>
             <Text>{messages['menu.backToMenu']}</Text>
           </MenuItem>
           <Section className={styles.headerMenu}>

@@ -9,23 +9,14 @@ import { getLocalization, locales } from '../localization';
 const getJobStreetProps = ({ country, language, loginAvailable }) => {
   const messages = getLocalization({ country, language });
 
-  const links = [];
-  links.push([ // first group of links
+  const links = [
     { title: messages['header.homeTitle'], url: messages['header.homeUrl'], ItemIcon: HomeIcon },
     { title: messages['header.myJobStreetTitle'], url: messages['header.myJobStreetUrl'], ItemIcon: PortalIcon },
     { title: messages['header.companyProfilesTitle'], url: messages['header.companyProfilesUrl'], ItemIcon: CompanyIcon },
     { title: messages['header.careerInsightsTitle'], url: messages['header.careerInsightsUrl'], ItemIcon: LightbulbIcon },
     { title: messages['header.educationTitle'], url: messages['header.educationUrl'], ItemIcon: EducationIcon }
-  ]);
-  links.push( // second group of links, login awareness goes here
-    loginAvailable ?
-      [ { title: messages['header.myAccountTitle'], url: messages['header.myAccountUrl'], ItemIcon: ProfileIcon } ] :
-      []
-  );
-  links.push([
-    { title: messages['header.employerSiteTitle'], url: messages['header.employerSiteUrl'] }
-  ]);
-
+  ];
+  
   const more = [
     { title: messages['header.overseasJobsTitle'], url: messages['header.overseasJobsUrl'] },
     { title: messages['header.freshGradJobsTitle'], url: messages['header.freshGradJobsUrl'] },
@@ -56,7 +47,7 @@ const getJobStreetProps = ({ country, language, loginAvailable }) => {
 const Header = ({ country = 'my', language = 'en', activeTab, loginAvailable = false }) => {
   return (
     <GlobalHeader
-      LogoComponent={CountryLogo}
+      LogoComponent={Logo}
       logoProps={{ country }}
       activeTab={activeTab}
       loginAvailable={loginAvailable}

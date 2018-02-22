@@ -26,8 +26,8 @@ currentLocale.propTypes = {
 };
 
 const renderPrimaryNavLinks = ({ links, brandStyles }) => {
-  const primaryNavLinks = (links.length && links[0].map) ?
-    links[0].map((link, index) => {
+  const primaryNavLinks = (links.length && links.map) ?
+    links.map((link, index) => {
       return (
         <span key={index} className={classnames(styles.primaryNavLink, brandStyles.primaryNavLink)}>
           <a href={link.url}>
