@@ -43,7 +43,11 @@ export default {
   'header.freshGradJobsUrl': `${baseUrlWithLanguage}/job-search/campus/job-vacancy.php`,
   'header.classifiedJobsTitle': 'Classified Jobs',
   'header.classifiedJobsUrl': `${baseUrlWithLanguage}/job-search/classified-ads.php`,
+  'menu.jobSeekerHeader': 'JOB SEEKER',
+  'menu.settingsHeader': 'SETTINGS',
   'menu.more': 'More',
+  'menu.moreHeader': 'MORE',
+  'menu.countryAndLanguage': 'Country & Language',
   'menu.backToMenu': 'Back to Menu'
 };
 

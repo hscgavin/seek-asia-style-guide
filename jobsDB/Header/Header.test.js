@@ -3,9 +3,9 @@ import { shallow } from 'enzyme';
 
 import Header from './Header';
 
-describe('JobStreet Header', () => {
+describe('JobsDB Header', () => {
   const defaultProps = {
-    country: 'my',
+    country: 'hk',
     language: 'en',
     activeTab: 'ACTIVE_TAB_HOME'
   };

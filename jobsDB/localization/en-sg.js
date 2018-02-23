@@ -14,6 +14,10 @@ export default {
   'header.employerSiteTitle': 'Employer Site',
   'header.employerLinkPrefix': 'Looking to hire? Check out our ',
   'header.employerSiteUrl': 'https://sg.jobsdb.com/SG/en/Home/EmployerIndex',
+  'menu.jobSeekerHeader': 'JOB SEEKER',
+  'menu.settingsHeader': 'SETTINGS',
   'menu.more': 'More',
+  'menu.moreHeader': 'MORE',
+  'menu.countryAndLanguage': 'Country & Language',
   'menu.backToMenu': 'Back to Menu'
 };

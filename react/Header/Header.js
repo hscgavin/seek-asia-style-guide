@@ -26,7 +26,7 @@ currentLocale.propTypes = {
 };
 
 const renderPrimaryNavLinks = ({ links, brandStyles }) => {
-  const primaryNavLinks = (links.length && links.map) ?
+  const primaryNavLinks = (links && links.map) ?
     links.map((link, index) => {
       return (
         <span key={index} className={classnames(styles.primaryNavLink, brandStyles.primaryNavLink)}>
@@ -73,7 +73,7 @@ export default class Header extends Component {
             {currentLocale(locales[0])}
           </div>
           <div className={styles.employerLink}>
-            <Text whispering>Looking to hire?  Check out our <a className={classnames(styles.employerLink, brandStyles.employerLink)} href={messages['header.employerSiteUrl']}>{messages['header.employerSiteTitle']}</a></Text>
+            <Text whispering>{messages['header.employerLinkPrefix']}<a className={classnames(styles.employerLink, brandStyles.employerLink)} href={messages['header.employerSiteUrl']}>{messages['header.employerSiteTitle']}</a></Text>
           </div>
         </div>
         <div className={loginAvailable ? styles.primaryNav : styles.primaryNavNoLogin}>
@@ -90,12 +90,12 @@ export default class Header extends Component {
 
 Header.propTypes = {
   loginAvailable: PropTypes.bool,
-  LogoComponent: PropTypes.func,
+  LogoComponent: PropTypes.func.isRequired,
   logoProps: PropTypes.object,
   activeTab: PropTypes.string,
   links: PropTypes.array,
   more: PropTypes.array,
-  locales: PropTypes.array,
+  locales: PropTypes.array.isRequired,
   messages: PropTypes.object.isRequired,
   brandStyles: PropTypes.object.isRequired
 };

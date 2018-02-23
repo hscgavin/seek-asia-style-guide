@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import styles from './Header.less';
 import { Header as GlobalHeader } from 'seek-asia-style-guide/react';
 import Logo from '../Logo/Logo';
-import { HomeIcon, PortalIcon, CompanyIcon, LightbulbIcon, EducationIcon, ProfileIcon } from 'seek-asia-style-guide/react';
+import { HomeIcon, PortalIcon, CompanyIcon, LightbulbIcon, EducationIcon } from 'seek-asia-style-guide/react';
 import { getLocalization, locales } from '../localization';
 
-const getJobStreetProps = ({ country, language, loginAvailable }) => {
+const getJobStreetProps = ({ country, language }) => {
   const messages = getLocalization({ country, language });
 
   const links = [
@@ -16,7 +16,7 @@ const getJobStreetProps = ({ country, language, loginAvailable }) => {
     { title: messages['header.careerInsightsTitle'], url: messages['header.careerInsightsUrl'], ItemIcon: LightbulbIcon },
     { title: messages['header.educationTitle'], url: messages['header.educationUrl'], ItemIcon: EducationIcon }
   ];
-  
+
   const more = [
     { title: messages['header.overseasJobsTitle'], url: messages['header.overseasJobsUrl'] },
     { title: messages['header.freshGradJobsTitle'], url: messages['header.freshGradJobsUrl'] },

@@ -23,7 +23,7 @@ export default class Menu extends Component {
     this.setState({ localesMenuOpen: !this.state.localesMenuOpen });
   }
 
-  renderMenuLinks = ({ links, locales, more, messages, brandStyles }) => {
+  renderMenuLinks = ({ links, more, messages, brandStyles }) => {
     if (links && links.map) {
       const menuItems = links.map((link, index) => (
         <MenuItem key={index} linkUrl={link.url} ItemIcon={link.ItemIcon} brandStyles={brandStyles}>
@@ -54,7 +54,7 @@ export default class Menu extends Component {
     return (
       <div className={classnames(styles.root, { [styles.showMenu]: shouldShowMenu })}>
         <Section className={styles.headerMenu}>
-          <Text whisperingTitle>JOB SEEKER</Text>
+          <Text whisperingTitle>{messages['menu.jobSeekerHeader']}</Text>
         </Section>
         {
           this.renderMenuLinks({ links, more, messages, brandStyles })
@@ -66,7 +66,7 @@ export default class Menu extends Component {
         </div>
 
         <Section className={styles.headerMenu}>
-          <Text whisperingTitle>SETTINGS</Text>
+          <Text whisperingTitle>{messages['menu.settingsHeader']}</Text>
         </Section>
         <div className={styles.menuBody}>
           { locales && locales.length && (
@@ -75,16 +75,16 @@ export default class Menu extends Component {
                 <Text>Country &amp; Language</Text>
                 <Text intimate className={styles.currentLocale}>{locales[0].title}</Text>
               </div>
-          </MenuItem>
+            </MenuItem>
           )}
         </div>
 
         <div className={this.state.moreMenuOpen ? styles.showSubMenu : styles.subMenu}>
-          <MenuItem handleClick={this.toggleMoreMenu.bind(this)}  itemClass={styles.backLink} ItemIcon={ChevronIcon} iconProps={{ direction: 'left', svgClassName: styles.backChevron }} brandStyles={brandStyles}>
+          <MenuItem handleClick={this.toggleMoreMenu.bind(this)} itemClass={styles.backLink} ItemIcon={ChevronIcon} iconProps={{ direction: 'left', svgClassName: styles.backChevron }} brandStyles={brandStyles}>
             <Text>{messages['menu.backToMenu']}</Text>
           </MenuItem>
           <Section className={styles.headerMenu}>
-            <Text whisperingTitle>MORE</Text>
+            <Text whisperingTitle>{messages['menu.moreHeader']}</Text>
           </Section>
           {more && more.map && more.map((link, index) => (
             <MenuItem key={index} linkUrl={link.url} itemClass={styles.moreItem} ItemIcon={link.ItemIcon} brandStyles={brandStyles}>
@@ -107,7 +107,7 @@ export default class Menu extends Component {
             if (index > 0) {
               return (
                 <MenuItem key={index} linkUrl={link.url} ItemIcon={link.ItemIcon} brandStyles={brandStyles}>
-                  <Text>{link.title}</Text>  
+                  <Text>{link.title}</Text>
                 </MenuItem>
               );
             }
@@ -121,10 +121,10 @@ export default class Menu extends Component {
 }
 
 Menu.propTypes = {
-  messages: PropTypes.object,
+  messages: PropTypes.object.isRequired,
   shouldShowMenu: PropTypes.bool,
   links: PropTypes.array,
-  locales: PropTypes.array,
+  locales: PropTypes.array.isRequired,
   more: PropTypes.array,
   brandStyles: PropTypes.object.isRequired
 };

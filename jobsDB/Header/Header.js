@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import styles from './Header.less';
 import { Header as GlobalHeader } from 'seek-asia-style-guide/react';
 import Logo from '../Logo/Logo';
-import { HomeIcon, PortalIcon, LightbulbIcon, ProfileIcon, ResourcesIcon } from 'seek-asia-style-guide/react';
+import { HomeIcon, PortalIcon, LightbulbIcon, ResourcesIcon } from 'seek-asia-style-guide/react';
 import { getLocalization, locales } from '../localization';
 
-const getJobsDBProps = ({ country, language, loginAvailable }) => {
+const getJobsDBProps = ({ country, language }) => {
   const messages = getLocalization({ country, language });
 
   const links = [
@@ -15,7 +15,7 @@ const getJobsDBProps = ({ country, language, loginAvailable }) => {
     { title: messages['header.resourcesTitle'], url: messages['header.resourcesUrl'], ItemIcon: ResourcesIcon },
     { title: messages['header.careerInsightsTitle'], url: messages['header.careerInsightsUrl'], ItemIcon: LightbulbIcon }
   ];
-  
+
   const currentLocale = locales.filter(locale => {
     return locale.country === country && locale.language === language;
   });
